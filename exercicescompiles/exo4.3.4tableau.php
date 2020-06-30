@@ -30,28 +30,55 @@
                 <?php // début balise PHP
          //Exo 4.1 Quelle semaine a lieu la validation du groupe 19002 ?
                 // Exo 4.2 Trouver la position de la dernière occurrence de Stage pour le groupe 19001.
-                // Exo 4.3 Extraire, dans un nouveau tableau, les codes des groupes.
+                // Exo 4.3 Extraire, dans un nouveau tableau, les codes des groupes
                 // Exo 4.5 Combien de semaines dure le stage du groupe 19003 ?
 
-                $a = array("19001" => array("Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "", "", "Centre", "Centre", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Validation", "Validation"), 
-                "19002" => array("Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Validation", ""), 
-                "19003" => array("", "", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "", "", "Validation") 
+                $a = array(     "19001" => array("Centre", "Centre", "Centre", "Centre", "Centre", "Centre", " test", "", "Centre", "Centre", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Validation", "Validation"), 
+                                "19002" => array("Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Validation", ""), 
+                                "19003" => array("", "", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Centre", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "Stage", "", "", "Validation") 
                 );
 
-                $tabgroup=[];
-                echo $tab[2][23]; 
-                for ($i = 0; $i < count($a)+1; $i++)
+                echo $a[19001][6]; // donne "test" en position 6 de la sous table 19001
+
+                // création d'un tableau sous_a
+                $sous_a = [];
+
+                // boucle pour que sous_a corresponde aux codes des groupes
+
+
+                        $sous_a = array_keys($a);
+                        print_r($sous_a);
+      
+        /*
+                foreach (array_keys($a) as $value)
+                { 
+
+                }
+
+                        if ($value == "Stage")
                         {
+                                $n = $key;
+                                echo "une  semaine de stage se déroule la semaine :".$n."<br>";
+                                $max = $n;
+                        } 
+                }
 
-                                echo $a[$i];
-                                $tabgroup[$i] = $a[$i];
 
-                                        foreach ($tabgroup as $key => $value) 
-                                                {
-                                                echo $key.$value."<br>"; 
-                                                }
-                        }
-                        
+                foreach ($a[19002] as $key => $value)
+
+                { 
+                        if ($value == "Stage")
+                        {
+                                $n = $key;
+                                echo "une  semaine de stage se déroule la semaine :".$n."<br>";
+                                $max = $n;
+                        } 
+                }
+
+
+
+ //action="index.php" pur appliquer sur button submit
+
 /* syntaxe tableau
 
 

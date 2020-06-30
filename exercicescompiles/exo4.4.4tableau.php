@@ -39,6 +39,21 @@
                 );
 
 
+                $n = 0;
+                $count = 0;
+                $max = 0;
+                foreach ($a[19003] as $key => $value)
+                {
+                        if ($value == "Stage")
+                        {
+                                $n = $key;
+                                echo "une  semaine de stage se déroule la semaine :".$n."<br>";
+                                $count++;
+                                $max = $n;
+                        }
+                }
+                echo "le stage du groupe 19003 dure :".$count." semaines"."<br>";
+
                 // fin balise PHP
                 ?>
 

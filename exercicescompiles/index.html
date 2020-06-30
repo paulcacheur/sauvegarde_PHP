@@ -132,14 +132,57 @@
            <a class="nav-link" href="exo4.4.4tableau.php">exo4.4tableau</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link" href="xxxxx.php">xxxx</a>
+           <a class="nav-link" href="exo5.1fonction.php">exo5.1fonction</a>
          </li>
-
        </ul>
 
      </div>
    </nav>
 
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <!-- Collapse button -->
+    <button 
+           class="navbar-toggler" 
+           type="button" 
+           data-toggle="collapse" 
+           data-target="#navbarTogglerDemo01" 
+           aria-controls="navbarTogglerDemo01" 
+           aria-expanded="false" 
+           aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+   </button>
+     <!-- Collapsible content -->
+   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+             <!-- Navbar brand -->
+     <a class="navbar-brand" href="https://www.google.com" target="_self" >Jarditou.com</a>
+
+     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+       <li class="nav-item">
+         <a class="nav-link" href="exo5.1.creationdynamique.php">5.creationdynamique</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="exo6.0.form.php">6. form test</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="exo6.1.formvalidation.php">6.1.validation formulaire</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="testtableau.php">testtableau</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="exo.php">exo</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="exo.php">exo</a>
+       </li>
+     </ul>
+
+   </div>
+ </nav>
+
+   
 
 <!-- image promotionjarditou -->
 
@@ -190,17 +233,190 @@
       <div class="row bg-highlight">
       </div>
       <hr>
+    
+    
+  </div>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <form class="col-12  px-0" action="Exo6.1.formvalidation.php" method="POST">
+
+<!-- 1ere partie du formulaire -->
+    <!--  LEGENDE fieldset A RAJOUTER  -->
+
+  <div class="form-group">
+
+<legend>Vos Coordonnées</legend>
+  </div>
+
+<div class="border border-black my-2" id="1ere partie formulaire">
+
+    <!-- Formulaire NOM -->
+
+<div class="row form-group  my-2 mx-auto">
+  <label class="col-sm-2 col-form-label align-self-center py-2" for="votreNom" >Votre Nom*:</label>
+    <div class="col-sm-10 px-0">
+        <input type="text"  class=" form-control-plaintext py-2 border" name= "nom" id="votreNom" placeholder="saisir votre nom">
+    </div>
+</div>
+
+  <!--  formulaire PRENOM  -->
+
+<div class="row form-group  my-2 mx-auto">
+  <label for="votreprénom" class="  col-sm-2 col-form-label Align-self-center py-2">Votre Prénom*:</label>
+    <div class="col-sm-10 px-0 border-black">
+        <input type="text"  class="form-control-plaintext Align-self-center py-2 border" name= "prenom" id="votreNom" placeholder="Saisir votre Prénom">
+    </div>
+</div>
+
+ <!--  formulaire GENRE  -->
+
+  <div class="row form-group my-2 mx-auto ">   
+  <label for="Sexe" class="col-sm-2 col-form-label">Sexe*:</label>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="genre" id="inlineRadio1" value="Masculin" >
+          <label class="form-check-label" for="inlineRadio1"required>Masculin</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="genre" id="inlineRadio2" value="Féminin" >
+          <label class="form-check-label" for="inlineRadio2" required>Féminin </label>
+      </div>
+  </div>
+</div>
+
+<!-- 2e partie du formulaire -->
+
+<div class="border border-black my-2" id="2nde partie formulaire">
+
+    <!-- Formulaire DOB -->
+
+    <div class="row form-group  my-2 mx-auto">
+      <!-- formulaire le for du label doit matcher avec l'ID de l'input du formulaire -->
+      <label for="DOB" class="  col-sm-2 col-form-label align-self-center py-2">Date De Naissance*:</label>
+      <div class="col-sm-10 px-0">
+        <!-- vérification par JS via l'ID et vérification via PHP dans l'hote virtuel par name, récupération par $_POST["nom] -->
+        <!-- type = date supprimé pour permettre test de validation PHP -->
+        <input type="text"  class=" form-control-plaintext py-2 border" name="ddn" id="DOB" placeholder="dd-mm-yyyy" >
+      </div>
+    </div>
+
+    <!-- Formulaire Code Postal -->
+
+    <div class="row form-group  my-2 mx-auto">
+      <label for="Code Postal" class="  col-sm-2 col-form-label align-self-center py-2">Code Postal:</label>
+      <div class="col-sm-10 px-0">
+        <input type="text"  class=" form-control-plaintext py-2 border" name="codepostal" id="CP" placeholder="Saisir votre Code Postal">
+      </div>
+  </div>
+
+    <!-- Formulaire Adresse -->
+
+    <div class="row form-group  my-2 mx-auto">
+        <label for="Adresse" class="  col-sm-2 col-form-label align-self-center py-2">Adresse:</label>
+        <div class="col-sm-10 px-0">
+          <input type="text"  class=" form-control-plaintext py-2 border" name="add" id="adresse" placeholder="Saisir votre Adresse">
+        </div>
+    </div>
+
+    <!-- Formulaire Ville -->
+
+    <div class="row form-group  my-2 mx-auto">
+      <label for="Ville" class="  col-sm-2 col-form-label align-self-center py-2">Ville:</label>
+      <div class="col-sm-10 px-0">
+      <input type="text"  class=" form-control-plaintext py-2 border" name="city" id="Ville" placeholder="Saisir votre Ville">
     </div>
   </div>
+
+  <!-- Formulaire email -->
+
+  <div class="row form-group  my-2 mx-auto">
+    <label for="email" class="col-sm-2 col-form-label align-self-center py-2">email:</label>
+    <div class="col-sm-10 px-0">
+      <!-- type "email" de l'html enlevé pour permette de valider la validation php -->
+    <input type="text"  class=" form-control-plaintext py-2 border" name="mail" id="email" placeholder="Dave.loper@afpa.fr" >
+    </div>
+  </div>
+
+  </div>
+   <!-- Formulaire select -->
+
+<!-- 3e partie du formulaire -->
+
+<div class="border border-black my-2" id="3e partie formulaire">
+
+  <div class="row form-group my-2 mx-auto">
+    <label for="inlineFormCustomSelect" class="col-sm-2 col-form-label align-self-center py-2" >Sujet*</label>
+    <div class="col-6 px-0">
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <option selected>Veuillez sélectionner un sujet</option>
+        <option value="1" name='select[]'>Mes commandes</option>
+        <option value="2" name='select[]'>Question sur un produit</option>
+        <option value="3" name='select[]'>Réclamations</option>
+        <option value="4" name='select[]'>Autres</option>
+      </select>
+    </div>
+  </div>
+
+<!-- Formulaire Text area -->
+
+<div class="form-group">
+<label for="exampleFormControlTextarea1 ml-auto">Votre Question</label>
+<textarea class="form-control" id="question" name ="textarea" rows="3"></textarea>
+</div>
+
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" name ="acceptetraitement" value="" id="defaultCheck1" >
+  <label class="form-check-label" for="defaultCheck1"> J'accepte le traitement informatique de ce formulaire</label>
+</div>
+
+<br>
+<br>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <INPUT type="reset" name="annulation" value="Annuler" class="btn btn-light">
+</div>
+
+<br>
+
+Autre approche et test:
+
+<div class="form-inline my-2 mx-auto">
+<label for="inlineFormCustomSelect" class="col-2 col-form-label py-2 pl-0" >Sujet*</label>
+<div class="col-6 px-0">
+<select class="custom-select mr-sm-2 justify-content-start" id="inlineFormCustomSelect" >
+<option selected>please choose an option</option>
+<option value="1">Mes commandes</option>
+<option value="2">Question susr un produit</option>
+<option value="3">Réclamations</option>
+<option value="4">Autres</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="exampleFormControlFile1">Example file input</label>
+<input type="file" class="form-control-file" id="exampleFormControlFile1">
+</div>
+
+</div>
+
+</form>
+
+<!-- TEST IMAE DYNAMIQUE -->
+
+<img src="exo5.1.creationdynamique.php" alt="test image dynamique">
+
+
 <!-- FOOTER -->
 
 <footer>
 
 
-  <!--Navbar Footer
-  -->
+  <!--Navbar Footer -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
+  
     <!-- Collapse button -->
     <button 
            class="navbar-toggler" 

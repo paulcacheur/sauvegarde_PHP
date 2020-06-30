@@ -39,14 +39,17 @@
                 );
 
                 $n = 0;
+                $max = 0;
                 foreach ($a[19002] as $key => $value) 
                 { 
                         if ($value == "Stage")
                         {
                                 $n = $key;
-                                echo "la semaine de stage est la semaine :".$n."<br>";
+                                echo "une  semaine de stage se déroule la semaine :".$n."<br>";
+                                $max = $n;
                         } 
                 }
+                echo "la dernière semaine de stage se déroule :".$max."<br>";
 
 
                 // fin balise PHP
