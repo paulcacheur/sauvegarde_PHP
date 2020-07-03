@@ -1,6 +1,14 @@
     <?php
+
+if (file_exists("fonctions.php"); 
+{
     include("fonctions.php"); 
     $message = "Hello world !";
+} 
+else 
+{
+     // Erreur (à gérer)
+} 
     ?>
 
 

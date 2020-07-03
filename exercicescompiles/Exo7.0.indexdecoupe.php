@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
-    
 
-<head>
+      <?php
 
-  <!-- nomenclature caractères-->
-        <meta charset="UTF-8">
-
-  <!-- titre du doc -->
-<title>index.html</title>
-
-<!-- interface responsive -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
-
-
-<!-- lien avec CDN bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-      
-
-
-       <link rel="stylesheet" href="public/css/jardibootstrap.css">-->
-
-</head>
+      if (file_exists("Exo7.0.entete.php"))
+          {
+              include("Exo7.0.entete.php"); 
+          } 
+      else 
+          {
+              echo "erreur";
+          } 
+          ?>
 
 <body>
 
@@ -33,14 +21,14 @@
 <!-- top header, image logojarditout et paragraphe -->
       <div class="row my-3 mx-auto">
         <div class="col-5 col-sm-3 my-auto"> 
-            <img src="public/images/jarditou_logo.jpg" alt="logojarditou" class="img-fluid" id=" logojarditou">
+            <img src="jardi_photos/jarditou_logo.jpg" alt="logojarditou" class="img-fluid" id=" logojarditou">
         </div>
         <div class="col-7 col-sm-9 my-auto">
             <p class="my-auto d-flex justify-content-center" id="texte_header" > Tout le jardin </p>
         </div>
       </div>
      
-
+      
 <!--Navbar Header-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -62,13 +50,13 @@
 
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Accueil <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="bootstrapindex.html">Accueil <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="tableau.html">Tableau</a>
+            <a class="nav-link" href="bootstraptableau.html">Tableau</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contacts</a>
+            <a class="nav-link" href="bootstrapcontact.html">Contacts</a>
           </li>
         </ul>
            <!-- recherche-->
@@ -82,7 +70,7 @@
 <!-- image promotionjarditou -->
 
       <div class="row">
-          <img class="col-12 img-fluid px-0" id="promotionjarditou" src="public/images/promotion.jpg" alt="promotionjarditou">
+          <img class="col-12 img-fluid px-0" id="promotionjarditou" src="jardi_photos/promotion.jpg" alt="promotionjarditou">
       </div>
 
   </header>
@@ -93,8 +81,6 @@
       </div>
       <br>
 
-
-
       <div class="row" id="centrepageindex">
 
         <div class="col-6 col-lg-8"> 
@@ -104,9 +90,7 @@
                     <h1>Accueil</h1>
                     
                     <hr>
-        
-
-          
+                    
                     <h2>L'entreprise</h2>
                         <p>Notre entreprise familiale met tout son savoir-faire à votre disposition dans le domaine du jardin et du paysagisme.</p>
                         <p>Créée il y a 70 ans, notre entreprise vend fleurs, arbustes, matériel à main et motorisés.</p>
@@ -115,11 +99,7 @@
                     <h2>Qualité</h2>
                         <p>Nous mettons à votre disposition un service personnalisé, avec 1 seul interlocuteur durant tout votre projet.</p>
                         <p>Vous serez séduit par notre expertise, nos compétences et notre sérieux.</p>
-                        
-                        <?php 
-                        echo "ceci est mon texte";
-                        ?>
-                        
+                    
                     <h2>Devis gratuit</h2>
                         <p>Vous pouvez bien sûr contacter pour de plus amples informations ou pour une demande d’intervention. Vous souhaitez un devis ? Nous vous le réalisons gratuitement.</p>
                     <br>
@@ -135,59 +115,20 @@
 
       <div class="row bg-highlight">
       </div>
-      <hr>
+      <br>
 
 <!-- FOOTER -->
 
-<footer>
+<?php
 
+  if (file_exists("Exo7.0.piedpage.php"))
+      {
+          include("Exo7.0.piedpage.php"); 
+      } 
+  else 
+      {
+          echo "erreur";
+      } 
+    ?>
 
-  <!--Navbar Footer
-  -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-    <!-- Collapse button -->
-    <button 
-           class="navbar-toggler" 
-           type="button" 
-           data-toggle="collapse" 
-           data-target="#navbarTogglerDemo01" 
-           aria-controls="navbarTogglerDemo01" 
-           aria-expanded="false" 
-           aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-   </button>
-
-     <!-- Collapsible content -->
-   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-
-
-     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-       <li class="nav-item">
-         <a class="nav-link" href="mentionslegales.html" target="_self">Mentions légales<span class="sr-only">(current)</span></a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="horaires.html" target="_self">Horaires</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="plandusite.html" target="_self">Plan du site</a>
-       </li>
-     </ul>
-   </div>
- </nav>
-
-  </footer>
-    
-</div> 
-<!-- intégration jQuery first, then Popper.js, then Bootstrap JS --> -->
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-<!-- intégrer un fichier js --> -->
-<script src="public/js/javascript.js"></script>
-
-</body>
-</html>
 
