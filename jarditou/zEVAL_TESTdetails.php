@@ -10,8 +10,13 @@
         require "connexionDB.php";                // Inclusion de notre bibliothèque de fonctions, et notamment la fonction appelant la DB
         $db = connexionBase();                         // Appel de la fonction de connexion connectionbase()
         $requete = "SELECT * FROM produits";
+        var_dump($requete);
         $result = $db->query($requete);
+        var_dump($result);
         $produit = $result->fetch(PDO::FETCH_OBJ);     // Renvoi de l'enregistrement sous forme d'un objet
+        var_dump($produit);
+        $produit2 = $result->fetch(PDO::FETCH_NAMED);     // Renvoi de l'enregistrement sous forme d'un objet
+        var_dump($produit2);
 
 
                ?>

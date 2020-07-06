@@ -19,9 +19,11 @@
 
         ?>
 
-<form class="col-12 px-0" method="POST" action="produitmodificationform.php" id ="formulairedetail">
+                        <!-- DEBUT DE FORMULAIRE -->
 
-                      <!-- Formulaire ID -->
+<form class="col-12 px-0" method="POST" action="produitmodificationform.php" id ="formulairedetail"> 
+
+                      <!-- Formulaire ID -->  
 
       <div class="row form-group  my-2 mx-auto">
         <label for="ID" class="  col-sm-12 col-form-label align-self-center py-2">ID:</label>
@@ -92,100 +94,147 @@
                 </div>
       </div>
 
+                          <!-- BOUTON BLOQUE  -->
 
-              <!-- BOUTON MODIFICATION--> 
+      
+      <div class="row form-group my-2 mx-auto ">
 
+      <label for="boutonbloque" class="col-sm-2 col-form-label">Produit bloqué:</label>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque1" value="1"
+                                            <?php 
+                                            // ETAPE 2 = attribuer la valeur de la variable
+                                            if ($produit->pro_bloque == 1)
+                                            {
+                                              echo "checked";
+                                              $varbloque = 1; // variable varbloque prend la valeur 1 quand le produit est bloqué
+                                            }
+                                            ?>
+              >
+              <label class="form-check-label" for="radiobloque1">Oui</label>
+            </div>
+
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque2" value="0"
+
+                                            <?php 
+                                            if (is_null($produit->pro_bloque) OR ($produit->pro_bloque) == 0)
+                                            {
+                                              echo"checked";
+                                              $varbloque = 0; // variable varbloque prend la valeur quand le produit n'est pas bloquée
+                                            }
+                                            ?>
+                >
+              <label class="form-check-label" for="radiobloque2" >Non </label>
+
+
+                            <!-- SECTION CACHEE POUR VARIABLE PRENANT LA VALEUR DE pro_bloque pour l'ID récupéré en GET -->
+
+                    <input type="hidden" name="variablecheck" value="<?php echo $varbloque; ?>"></input>  
+
+            </div>
+      
+      </div>
+
+
+
+                                          <!-- LES BOUTONS DU FORMULAIRE --> 
 
 
       <div class="row form-group  my-2 mx-auto">
 
-                        <div class="  col-sm-6 col-form-label py-2 Align-items-between">
+                <!-- BOUTON MODIFICATION--> 
 
-                              <button type="submit" class="btn btn-primary" id="submitmodifform" name="submitmodifform">Modifier le produit</button>
+                        <div class="  col-sm-4 col-form-label py-2 Align-items-between">
 
-                        </div>
-      </div>
-
-</form>
-
-              <!-- BOUTON RETOUR A L'ACCUEIL --> 
-
-                        <div class="  col-sm-6 col-form-label  py-2 Align-items-center">
-
-                        <form method="POST" action="index.php">
-                          <button type="submit" class="btn btn-primary" id="accueil" name="accueil">Retour a l'accueil</button>
-                        </form>
+                              <button type="submit" class="btn btn-primary" id="submitmodifform" name="submitmodifform">Modification du produit</button>
 
                         </div>
-
+   
 
               <!-- BOUTON SUPPRESSION --> 
 
 
-                      <div class="  col-sm-6 col-form-label  py-2 Align-items-center">
+                      <div class="  col-sm-4 col-form-label  py-2 Align-items-center">
 
-                        <button type="button" class="btn btn-primary" id="suppression" name="suppression" onclick="suppressionproduit()">Suppression</button>
+                      <button type="button" class="btn btn-primary" id="suppression" name="suppression" onclick="suppressionproduit()">Suppression du produit</button>
 
                       </div>
-      
 
 
+              <!-- BOUTON RETOUR A L'ACCUEIL  -->
 
+                      <div class="  col-sm-4 col-form-label  py-2 Align-items-center">
+
+                      <button type="button" class="btn btn-primary" id="accueil" name="accueil" onclick="location.href='index.php'">Retour à l'accueil</button>
+
+                      </div>
+
+              <!-- BOUTON RETOUR A L'ACCUEIL 
+
+                        <div class=" col-sm-4 col-form-label  py-2 Align-items-center">
+
+                        <form method="POST" action="index.php">
+                          <button type="submit" class="btn btn-primary" id="accueil" name="accueil">Retour a l'accueil</button>
+                        </form>--> 
+
+                        </div>
+      </div>
 
 <br>
 
-          <!-- INFORMATIONS SOUS LE FORMULAIRE -->
 
       <div class="row form-group my-2 mx-auto ">
 
-        <label for="boutonbloque" class="col-sm-2 col-form-label">Produit bloqué:</label>
+              <div class="col-12">
+    <a>Date d'ajout: </a> <?php echo $produit->pro_d_ajout;?>
+              </div>
+              </div>
 
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque1" value="oui"
-          <?php 
-          if ($produit->pro_bloque == 1)
-          {
-            echo "checked";
-          }
-
-          ?>
-          >
-          <label class="form-check-label" for="radiobloque1">Oui</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque2" value="Non"
-          <?php 
-          if (is_null($produit->pro_bloque))
-          {
-            echo"checked";
-          }
-          ?>
-          >
-          <label class="form-check-label" for="radiobloque2" >Non </label>
+              <div class="col-12">
+    <a>Date de modification: </a><?php echo $produit->pro_d_modif;?>
+              </div>
 
       </div>
+
+      </form>
 <br>
 
-          <div class="col-12">
-<a>Date d'ajout: </a> <?php echo $produit->pro_d_ajout;?>
-          </div>
-      </div>
 
-          <div class="col-12">
-<a>Date de modification: </a><?php echo $produit->pro_d_modif;?>
-          </div>
 
-      </div>
 
-<br>
+<!--  faire passer une variable d'un document PHP à un autre = OBJECTIF RECUP2RER LA VALEUR DES BOUTONS RADIO
+1. créer un formulaire contenant la variable à transmettre méthode post en hidden dans la première page avec des variables prenant les valeurs
+              2 Attribuer les valeurs de la variable dans la première page
+              3. les récupérer en post dans la seconde page
+
+ 
+ 
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <!-- FOOTER -->
         
         <?php
         include("piedpage.php");
         ?>
-
-
 
 <!--  syntaxe ajout 
 

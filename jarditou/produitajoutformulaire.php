@@ -15,26 +15,19 @@
 
 <a>FORMULAIRE D'AJOUT DE PRODUIT</a>
 
-<form class="col-12  px-0">
+<form class="col-12  px-0" method="POST" action="produitajoutscript.php">  <!-- DEBUT DU FORMULAIRE -->
 
 
 <div class="border border-black my-2" id="1ere partie formulaire">
 
-                        <!-- Formulaire ID -->
-
-      <div class="row form-group  my-2 mx-auto">
-        <label for="ID" class="  col-sm-12 col-form-label align-self-center py-2">ID:</label>
-                <div class="col-sm-12 px-0">
-                <input type="text"  class="form-control-plaintext py-2 border" id="ID" name="ID" placeholder="ID">
-                </div>
-      </div>
+                        <!-- Formulaire ID non nécessaire car auto increment -->
 
                         <!-- Formulaire Catégorie -->
 
                                   <div class="row form-group  my-2 mx-auto">
         <label for="categorie" class="  col-sm-12 col-form-label align-self-center py-2">Catégorie:</label>
                 <div class="col-sm-12 px-0">
-                <input type="text"  class=" form-control-plaintext py-2 border" id="categorie" name="categorie placeholder="categorie">
+                <input type="text"  class=" form-control-plaintext py-2 border" id="categorie" name="categorie" placeholder="categorie">
                 </div>
       </div>
 
@@ -48,12 +41,12 @@
       </div>
 
 
-                     <!-- Formulaire Libellé -->
+                     <!-- Formulaire libelle -->
 
       <div class="row form-group  my-2 mx-auto">
-        <label for="libellé" class="  col-sm-12 col-form-label align-self-center py-2">Libellé:</label>
+        <label for="libelle" class="  col-sm-12 col-form-label align-self-center py-2">libelle:</label>
                 <div class="col-sm-12 px-0">
-                <input type="text"  class=" form-control-plaintext py-2 border" id="libellé" name="libellé" placeholder="libellé">
+                <input type="text"  class=" form-control-plaintext py-2 border" id="libelle" name="libelle" placeholder="inscrire le libelle">
                 </div>
       </div>
 
@@ -75,7 +68,7 @@
                 </div>
       </div>
 
-                           <!-- Formulaire Stock -->
+                        <!-- Formulaire Stock -->
 
       <div class="row form-group  my-2 mx-auto">
         <label for="stock" class="  col-sm-12 col-form-label align-self-center py-2">Stock:</label>
@@ -84,7 +77,7 @@
                 </div>
       </div>
 
-                           <!-- Formulaire Couleur -->
+                        <!-- Formulaire Couleur -->
 
       <div class="row form-group  my-2 mx-auto">
         <label for="couleur" class="  col-sm-12 col-form-label align-self-center py-2">Couleur:</label>
@@ -92,49 +85,64 @@
                 <input type="text"  class=" form-control-plaintext py-2 border" id="couleur" name="couleur"  placeholder="couleur">
                 </div>
       </div>
-      
-                                 <!-- Formulaire Photo A GERER PLUS TARD -->
+
+                        <!-- Formulaire Photo A GERER PLUS TARD -->
 
 
         <div class="row form-group  my-2 mx-auto">
-        <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">Couleur:</label>
+        <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">photo:</label>
                 <div class="col-sm-12 px-0">
                 <input type="text"  class=" form-control-plaintext py-2 border" id="photo" name="photo"  placeholder="photo">
                 </div>
       </div>
 
+                        <!-- BOUTON BLOQUE  -->
 
-<!-- boutons submit / Reset / Envoyer - ENVOIE DANS LE FICHIER produits_ajout.php"> --> 
+      
+                          <div class="row form-group my-2 mx-auto ">
 
-        <form method="POST" action="produitajoutscript.php">
+<label for="boutonbloque" class="col-sm-2 col-form-label">Produit bloqué:</label>
 
-        <button type="submit" class="btn btn-primary">Valider l'ajout du produit</button>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque1" value="1">
+        <label class="form-check-label" for="radiobloque1">Oui</label>
+      </div>
 
-        </form>
 
-                      <!-- BOUTONS retour à l'accueil--> 
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque2" value="0">
+        <label class="form-check-label" for="radiobloque2">Non </label>
+      </div>
 
-<form action="index.php">
 
-<button type="submit" class="btn btn-primary" id="accueil" name="accueil" >Retour a l'accueil</button>
-
-</form>
-
-<!-- RESTE A CADRER L'AJOUT AVANT ENVOI -->
-
+      <!-- <input class="form-check-input" type="hidden" name="valeurbloque" id="valeurbloque" value= > -->
 
 
 
 </div>
 
-</form>
 
-<br>
-
-
-<br>
+                                         <!-- LES BOUTONS -->
 
 
+<!-- bouton SMBMIT ENVOIE DANS LE FICHIER produits_ajout.php"> --> 
+
+
+        <button type="submit" class="btn btn-primary">Valider l'ajout du produit</button>
+
+
+<!-- BOUTON retour à l'accueil--> 
+        <button type="button" class="btn btn-primary" id="accueil" name="accueil" onclick="location.href='index.php'">Retour à l'accueil</button>
+
+
+</div>
+
+
+
+
+
+
+</form> <!-- FIN DU FORMULAIRE -->
 
 
 </html>

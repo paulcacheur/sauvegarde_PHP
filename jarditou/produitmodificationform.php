@@ -98,40 +98,85 @@
 
                         <!-- Formulaire Photo A GERER PLUS TARD -->
 
-                                 <div class="row form-group  my-2 mx-auto">
-        <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">Couleur:</label>
+        <div class="row form-group  my-2 mx-auto">
+        <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">Photo:</label>
                 <div class="col-sm-12 px-0">
                 <input type="text"  class=" form-control-plaintext py-2 border" id="photo" name="photo"  placeholder="photo">
                 </div>
       </div>
 
-                        <!-- BOUTONS submit pour le form--> 
+                        <!-- RECUPERATION DE LA VALEUR DU Formulaire RADIO BLOQUE DANS FICHIER DETAILS ET REAFFICHAGE DU BOUTON BLOQUE AVEC LA BONNE VALEUR-->
+
+                                                                                <?php 
+                                                                                // variable créee dans un "hidden" input dans le fichier details
+                                                                                //Si la variable $_POST['variablecheck'] existe, alors $valeurbloquereport = $_POST['variablecheck']  sinon elle vaut NULL 
+                                                                                $valeurbloquereport = isset($_POST['variablecheck']) ? $_POST['variablecheck'] : NULL;
+
+                                                                                ?>
+
+      <div class="row form-group my-2 mx-auto ">
+
+                <label for="boutonbloque" class="col-sm-2 col-form-label">Produit bloqué:</label>
+
+                <div class="form-check form-check-inline">
+
+                <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque1" value="1"
+                                                                                <?php 
+                                                                                if ($valeurbloquereport == 1) // variable créee dans un "hidden" input dans le fichier details
+                                                                                {
+                                                                                echo "checked";
+                                                                                }
+
+                                                                                ?>
+                >
+                <label class="form-check-label" for="radiobloque1">Oui</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+
+                <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque2" value="0"
+                                                                                <?php 
+                                                                                if ($valeurbloquereport == 0) // variable créee dans un "hidden" input dans le fichier details
+                                                                                {
+                                                                                echo"checked";
+                                                                                }
+                                                                                ?>
+                >
+                <label class="form-check-label" for="radiobloque2" >Non </label>
+
+                </div>
+        </div>
+
+
+
+                        <!-- BOUTONS submit pour Valider la modification du produit--> 
 
 
               <div class="row form-group  my-2 mx-auto">
+
                         <div class="  col-sm-6 col-form-label py-2 Align-items-between">
 
                             <form method="POST" action="produitmodification.php">
-                              <button type="submit" class="btn btn-primary" id="submitmodifform" name="submitmodifform">VALIDER LES MODIFICATIONS</button>
+                              <button type="submit" class="btn btn-primary" id="submitmodifform" name="submitmodifform">Valider la modification</button>
                             </form>
 
                         </div>
+                        
+                        <div class="  col-sm-6 col-form-label py-2 Align-items-between">
+                        <!-- BOUTONS retour à l'accueil--> 
+                        <button type="button" class="btn btn-primary" id="accueil" name="accueil" onclick="location.href='index.php'">Retour à l'accueil</button>
 
-                        <div class="  col-sm-6 col-form-label  py-2 Align-items-center">
+                        <!-- BOUTONS retour à l'accueil SANS FORM
+                        <div class="  col-sm-6 col-form-label py-2 Align-items-between">
+                                <form action="index.php">
+                                <button type="submit" class="btn btn-primary" id="accueil" name="accueil" >Retour a l'accueil</button>
+                                </form>--> 
                         </div>
+                </div>
+
             </div>
     </div>
-</form>
 
-                        <!-- BOUTONS retour à l'accueil--> 
-
-                        <form action="index.php">
-
-                        <button type="submit" class="btn btn-primary" id="accueil" name="accueil" >Retour a l'accueil</button>
-
-                        </div>
-
-                        </form>
 
 
 </html>
