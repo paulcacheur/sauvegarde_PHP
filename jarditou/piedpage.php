@@ -2,9 +2,11 @@
 
 <footer>
 
-  <!--Navbar Footer
-  -->
+
+  <!--Navbar Footer-->
+  
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
 
     <!-- Collapse button -->
     <button 
@@ -20,8 +22,6 @@
 
      <!-- Collapsible content -->
    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-
-
      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
        <li class="nav-item">
          <a class="nav-link" href="mentionslegales.html" target="_self">Mentions légales<span class="sr-only">(current)</span></a>
@@ -35,7 +35,6 @@
      </ul>
    </div>
  </nav>
-
   </footer>
     
 </div> 

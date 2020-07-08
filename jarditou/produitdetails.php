@@ -25,9 +25,9 @@
                       <!-- Formulaire ID -->  
 
       <div class="row form-group  my-2 mx-auto">
-        <label for="ID" class="  col-sm-12 col-form-label align-self-center py-2">ID:</label>
+        <label for="id" class="  col-sm-12 col-form-label align-self-center py-2">ID:</label>
                 <div class="col-sm-12 px-0">
-                <input type="text"  class="form-control-plaintext py-2 border" id="ID" name="id" value="<?php echo $produit->pro_id;?>" readonly>
+                <input type="text"  class="form-control-plaintext py-2 border" id="id" name="id" value="<?php echo $produit->pro_id;?>" readonly>
                 </div>
       </div>
 
@@ -92,6 +92,17 @@
                 <input type="text"  class=" form-control-plaintext py-2 border" id="couleur" name="couleur" value="<?php echo $produit->pro_couleur;?>" readonly>
                 </div>
       </div>
+
+                              <!-- Formulaire extension photo -->
+
+
+        <div class="row form-group  my-2 mx-auto">
+        <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">Extension photo:</label>
+                <div class="col-sm-12 px-0">
+                <input type="text" class=" form-control-plaintext py-2 border" name="photoext" id="photoext"  value="<?php echo $produit->pro_photo;?>" readonly>
+            
+                </div>
+        </div>
 
                           <!-- BOUTON BLOQUE  -->
 
@@ -172,49 +183,46 @@
                         </div>
       </div>
 
-<br>
+
+                <div class="row form-group my-2 ml-5  ">
+
+                        <div class="col-12 col-form-label ">
+              <a>Date d'ajout: </a> <?php echo $produit->pro_d_ajout;?>
+                        </div>
+                </div>
 
 
-      <div class="row form-group my-2 mx-auto ">
+                <div class="row form-group my-2 ml-5 ">
+                        <div class="col-12 col-form-label ">
+              <a>Date de modification: </a><?php echo $produit->pro_d_modif;?>
+                        </div>
+                </div>
 
-              <div class="col-12">
-    <a>Date d'ajout: </a> <?php echo $produit->pro_d_ajout;?>
-              </div>
-              </div>
+      </form>                                       <!-- FIN DU FORMULAIRE -->
 
-              <div class="col-12">
-    <a>Date de modification: </a><?php echo $produit->pro_d_modif;?>
-              </div>
 
-      </div>
-
-      </form>
 
                     <!-- BOUTON SUPPRESSION dans un formulaire  à part pour envoyer les données dans suppression.php--> 
 
-                    <div class="row form-group my-2 mx-auto ">
+                  <div class="row form-group my-2 mx-auto ">
 
-                    <form class="col-12 px-0 col-form-label  py-2 Align-items-center" method="POST" action="suppression.php" id ="suppression"> 
+                    <form class="col-sm-12 px-0 col-form-label  py-2 Align-items-center" method="POST" action="suppression.php" id ="suppression"> 
 
-                         <input type="hidden" id="recupid" name="recupextphoto"> <!--  input hidden pour récupérer la valeur de l'exension photo pour pouvoir  supprimer photo- -->
+                        <input type="hidden" id="recupextphoto" name="recupextphoto" value="<?php echo $produit->pro_photo;?>"> <!--  input hidden pour récupérer la valeur de l'extension photo pour pouvoir supprimer photo- -->
+                        <input type="hidden" id="recuppro_id" name="recuppro_id" value="<?php echo $produit->pro_id;?>"> <!--  input hidden pour récupérer la valeur de l'extension photo pour pouvoir supprimer photo- -->
 
                         <button type="submit" class="btn btn-primary" id="suppression" name="suppression" onclick="suppressionproduit()">Suppression du produit</button>
 
                     </form>
 
-                    </div>
+                  </div>
 <br>
-
-
 
 
 <!--  faire passer une variable d'un document PHP à un autre = OBJECTIF RECUP2RER LA VALEUR DES BOUTONS RADIO
 1. créer un formulaire contenant la variable à transmettre méthode post en hidden dans la première page avec des variables prenant les valeurs
               2 Attribuer les valeurs de la variable dans la première page
               3. les récupérer en post dans la seconde page
-
- 
- 
  -->
 
 

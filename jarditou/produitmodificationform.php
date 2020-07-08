@@ -47,18 +47,22 @@
         <label for="categorie" class="col-sm-12 col-form-label align-self-center py-2" >catégorie</label>
                 <div class="col-12 px-0">
                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="categorie">
-                                <option selected>Veuillez sélectionner une catégorie</option>
+                               <option selected> <?php echo $_POST['categorie']; ?></option>   <!-- reporte la catégorie reportée -->
                                 <?php 
                                         $reponsecat = $db->query('SELECT DISTINCT cat_nom, cat_id FROM categories ORDER BY cat_id ASC');
                                         $resultat = $reponsecat->fetch(PDO::FETCH_OBJ);
                                         while ($resultat = $reponsecat->fetch())
                 {
-                        echo '<option value="' .$resultat['cat_id'].'" placeholder="'.$_POST['categorie'].'">' .$resultat['cat_nom']. '</option>';
+                        echo '
+                                <option value="' .$resultat['cat_id'].'" placeholder="'.$_POST['categorie'].'">' .$resultat['cat_nom']. '</option>'; // donne  une liste de toutes les catégories disponibles
                 } 
-                                ?>>
+                                ?>>                               
+                                <option>Autre: </option>
+
                         </select>
                 </div>
         </div>
+
 
                      <!-- Formulaire Libellé -->
 
@@ -105,11 +109,21 @@
                 </div>
       </div>
 
-                        <!-- Formulaire Photo -->
+                        <!-- Formulaire Extension Photo -->
+
+
+      <div class="row form-group  my-2 mx-auto">
+        <label for="photoext" class="  col-sm-12 col-form-label align-self-center py-2">Extension photo:</label>
+                <div class="col-sm-12 px-0">
+                <input type="text"  class=" form-control-plaintext py-2 border" id="photoext" name="photoext" value="<?php echo $_POST['photoext'];?>">
+                </div>
+      </div>
+
+                        <!-- Formulaire Photo (chargement image) -->
 
 
                         <div class="row form-group  my-2 mx-auto">
-        <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">photo:</label>
+        <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">Chargement de la photo:</label>
                 <div class="col-sm-12 px-0">
                 <input type="file" name="photo" id="photo"  placeholder="photo"> 
                 </div>
@@ -118,12 +132,12 @@
 
                         <!-- RECUPERATION DE LA VALEUR DU Formulaire RADIO BLOQUE DANS FICHIER DETAILS ET REAFFICHAGE DU BOUTON BLOQUE AVEC LA BONNE VALEUR-->
 
-                                                                                <?php 
-                                                                                // variable créee dans un "hidden" input dans le fichier details
-                                                                                //Si la variable $_POST['variablecheck'] existe, alors $valeurbloquereport = $_POST['variablecheck']  sinon elle vaut NULL 
-                                                                                $valeurbloquereport = isset($_POST['variablecheck']) ? $_POST['variablecheck'] : NULL;
+                                                                <?php 
+                                                                // variable créee dans un "hidden" input dans le fichier details
+                                                                //Si la variable $_POST['variablecheck'] existe, alors $valeurbloquereport = $_POST['variablecheck']  sinon elle vaut NULL 
+                                                                $valeurbloquereport = isset($_POST['variablecheck']) ? $_POST['variablecheck'] : NULL;
 
-                                                                                ?>
+                                                                ?>
 
       <div class="row form-group my-2 mx-auto ">
 
@@ -132,13 +146,13 @@
                 <div class="form-check form-check-inline">
 
                 <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque1" value="1"
-                                                                                <?php 
-                                                                                if ($valeurbloquereport == 1) // variable créee dans un "hidden" input dans le fichier details
-                                                                                {
-                                                                                echo "checked";
-                                                                                }
+                                                                <?php 
+                                                                if ($valeurbloquereport == 1) // variable créee dans un "hidden" input dans le fichier details
+                                                                {
+                                                                echo "checked";
+                                                                }
 
-                                                                                ?>
+                                                                ?>
                 >
                 <label class="form-check-label" for="radiobloque1">Oui</label>
                 </div>
@@ -146,12 +160,12 @@
                 <div class="form-check form-check-inline">
 
                 <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque2" value="0"
-                                                                                <?php 
-                                                                                if ($valeurbloquereport == 0) // variable créee dans un "hidden" input dans le fichier details
-                                                                                {
-                                                                                echo"checked";
-                                                                                }
-                                                                                ?>
+                                                                <?php 
+                                                                if ($valeurbloquereport == 0) // variable créee dans un "hidden" input dans le fichier details
+                                                                {
+                                                                echo"checked";
+                                                                }
+                                                                ?>
                 >
                 <label class="form-check-label" for="radiobloque2" >Non </label>
 
@@ -205,21 +219,21 @@
       -->
 
 
-                              <!-- Formulaire Catégorie BACK UP-->
+                              <!-- Formulaire Catégorie BACK UP
 
-                              <div class="row form-group my-2 mx-auto">
+        <div class="row form-group my-2 mx-auto">
         <label for="categorie" class="col-sm-12 col-form-label align-self-center py-2" >catégorie*</label>
                 <div class="col-12 px-0">
                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="categorie">
                                 <option selected>Veuillez sélectionner une catégorie</option>
-                                <?php 
+                                <?php /*
                                         $reponsecat = $db->query('SELECT DISTINCT cat_nom, cat_id FROM categories ORDER BY cat_id ASC');
                                         $resultat = $reponsecat->fetch(PDO::FETCH_OBJ);
                                         while ($resultat = $reponsecat->fetch())
                 {
                         echo '<option value="' .$resultat['cat_id'].'">' .$resultat['cat_nom']. '</option>';
-                } 
-                                ?>>
+                } */
+                                ?>
                         </select>
                 </div>
-        </div>
+        </div> -->

@@ -15,8 +15,8 @@ function suppressionproduit()
                     // envoyer le formulaire
             var pro_id = document.getElementById("ID").value; // va chercher la valeur du pro_ID dnas le formulaire via son ID
             // console.log(pro_id); vérification is en commentaire
-            location.href="suppression.php?pro_id="+pro_id; // instruction de se rendre à la page suppression.php?pro_id="valeur du pro_id récupéré" puis à la page index.php (lien sur page suppression.php)
-            
+
+            // location.href="suppression.php?pro_id="+pro_id; // instruction de se rendre à la page suppression.php?pro_id="valeur du pro_id récupéré" puis à la page index.php (lien sur page suppression.php)
         }
         else        
         {
@@ -24,4 +24,12 @@ function suppressionproduit()
             location.href="index.php";
         }
 }
+
+
+
+
+
+
+
+
 

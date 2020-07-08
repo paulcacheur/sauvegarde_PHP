@@ -156,7 +156,7 @@ else
         // var_dump($_FILES); // visualisation des caractéristiques de l'image, mis en commentaire
 
 
-        $nominitialimage = $_FILES['photo']['name']; // vérification du nom de l'image initiale
+        $nominitialimage = $_FILES['photo']['name']; // variable nom de l'image initiale
         //var_dump($nominitialimage);
 
         $extensionfichier = pathinfo($nominitialimage, PATHINFO_EXTENSION); // variable pour capturer l'extension du fichier

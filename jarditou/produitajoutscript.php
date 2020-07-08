@@ -155,10 +155,10 @@ else
                                         // tranfert  PHOTO
         
 
-        // var_dump($_FILES); // visualisation des caractéristiques de l'image, mis en commentaire
+        var_dump($_FILES); // visualisation des caractéristiques de l'image, mis en commentaire
 
 
-        $nominitialimage = $_FILES['photo']['name']; // vérification du nom de l'image initiale
+        $nominitialimage = $_FILES['photo']['name']; // variable nom de l'image initiale
         //var_dump($nominitialimage);
 
         $extensionfichier = pathinfo($nominitialimage, PATHINFO_EXTENSION); // variable pour capturer l'extension du fichier
@@ -167,8 +167,8 @@ else
         // requête pour avoir le max(id)+1 afin d'attribuer le nom de la photo = pro_id atribué par auto incrémentation
         $reponsemaxid = $db->query('SELECT max(pro_id) FROM produits');
         $resultmaxid = $reponsemaxid->fetch(PDO::FETCH_COLUMN);
+        //var_dump($resultmaxid);
 
-        var_dump($resultmaxid);
         $resultmaxidetun = $resultmaxid + 1;
 
 
@@ -179,8 +179,6 @@ else
 
 
 /*
-
-
                 $_FILES['fichier']['name']
                     Contient le nom d'origine du fichier 
 
@@ -196,12 +194,6 @@ else
                 $_FILES['fichier']['error']
                     Code de l'erreur (le cas échéant) (disponible à partir de php 4.2.0) 
 */
-
-
-
-
-
-             
 
 
                 // check  BOUTON RADIO BLOQUE 
@@ -247,7 +239,7 @@ if (isset($_POST["stock"]))
 if (isset($_POST["couleur"]))
         $tab["couleur"] = $couleur;
 
-        // rentrer le nom de la photo (avec extension dans la DB)
+        // rentrer le nom de la photo (= extension dans la DB)
 if (isset($extensionfichier))
         $tab["photo"] = $extensionfichier;
 
