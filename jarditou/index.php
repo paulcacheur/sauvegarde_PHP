@@ -4,7 +4,7 @@
         include("entete.php");
 
         require "connexionDB.php";                // Inclusion de notre bibliothèque de fonctions, et notamment la fonction appelant la DB
-        $db = connexionBase();                         // Appel de la fonction de connexion connectionbase()
+        $db = connexionBase();                    // Appel de la fonction de connexion connectionbase()
         $requete = "SELECT * FROM produits";
         $result = $db->query($requete);
         // $produit = $result->fetch(PDO::FETCH_OBJ);     // Renvoi de l'enregistrement sous forme d'un objet, enlevé
@@ -55,7 +55,7 @@
                                           echo '<td><img src="public/images/'.$produit->pro_id.'.'.$produit->pro_photo.'" class="img-fluid" width="100" height="100" alt="produit n°: '.$produit->pro_id.'"></td>';
                                           echo"<td>".$produit->pro_id."</td>";
                                           echo"<td>".$produit->pro_ref."</td>";
-                                          echo'<td><a href="produitdetails.php?pro_id='.$produit->pro_id.'">'.$produit->pro_libelle.'</a></td>';
+                                          echo'<td><a href="produitdetails.php?pro_id='.$produit->pro_id.'">'.$produit->pro_libelle.'</a></td>'; // renvoie à la page avec url?pri_id=pro_id, avec comme ien pro_libelle
                                           echo"<td>".$produit->pro_prix."</td>";
                                           echo"<td>".$produit->pro_stock."</td>";
                                           echo"<td>".$produit->pro_couleur."</td>";

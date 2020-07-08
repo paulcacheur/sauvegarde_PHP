@@ -74,6 +74,9 @@ include("connexionDB.php");
           <li class="nav-item">
             <a class="nav-link" href="connexionDB.php">connexionDB</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="test.php">test</a>
+          </li>
         </ul>
         
       </div>

@@ -10,13 +10,12 @@
 
               $db = connexionBase(); // Appel de la fonction de connexion
 
-              $pro_id = $_GET["pro_id"];
-              $requete = "SELECT * FROM produits WHERE pro_id=".$pro_id;
+              $pro_id = $_GET["pro_id"]; // va chercher le pro_id dans l'adresse URL
+              $requete = "SELECT * FROM produits WHERE pro_id=".$pro_id; //  formule la requête
               $result = $db->query($requete);
 
               // Renvoi de l'enregistrement sous forme d'un objet
               $produit = $result->fetch(PDO::FETCH_OBJ);
-
         ?>
 
                         <!-- DEBUT DE FORMULAIRE -->
@@ -70,9 +69,9 @@
                      <!-- Formulaire Prix -->
 
       <div class="row form-group  my-2 mx-auto">
-        <label for="prix" class="  col-sm-12 col-form-label align-self-center py-2">Prix:</label>
+        <label for="prix" class="  col-sm-12 col-form-label align-self-center py-2">Prix en Euros:</label>
                 <div class="col-sm-12 px-0">
-                <input type="text"  class=" form-control-plaintext py-2 border" id="prix" name="prix" value="<?php echo $produit->pro_prix;?>€" readonly>
+                <input type="text"  class=" form-control-plaintext py-2 border" id="prix" name="prix" value="<?php echo $produit->pro_prix;?>" readonly>
                 </div>
       </div>
 
@@ -135,10 +134,7 @@
                     <input type="hidden" name="variablecheck" value="<?php echo $varbloque; ?>"></input>  
 
             </div>
-      
       </div>
-
-
 
                                           <!-- LES BOUTONS DU FORMULAIRE --> 
 
@@ -147,26 +143,19 @@
 
                 <!-- BOUTON MODIFICATION--> 
 
-                        <div class="  col-sm-4 col-form-label py-2 Align-items-between">
+                        <div class="  col-sm-6 col-form-label py-2 Align-items-between">
 
                               <button type="submit" class="btn btn-primary" id="submitmodifform" name="submitmodifform">Modification du produit</button>
 
                         </div>
    
 
-              <!-- BOUTON SUPPRESSION --> 
 
-
-                      <div class="  col-sm-4 col-form-label  py-2 Align-items-center">
-
-                      <button type="button" class="btn btn-primary" id="suppression" name="suppression" onclick="suppressionproduit()">Suppression du produit</button>
-
-                      </div>
 
 
               <!-- BOUTON RETOUR A L'ACCUEIL  -->
 
-                      <div class="  col-sm-4 col-form-label  py-2 Align-items-center">
+                      <div class="  col-sm-6 col-form-label  py-2 Align-items-center">
 
                       <button type="button" class="btn btn-primary" id="accueil" name="accueil" onclick="location.href='index.php'">Retour à l'accueil</button>
 
@@ -200,6 +189,20 @@
       </div>
 
       </form>
+
+                    <!-- BOUTON SUPPRESSION dans un formulaire  à part pour envoyer les données dans suppression.php--> 
+
+                    <div class="row form-group my-2 mx-auto ">
+
+                    <form class="col-12 px-0 col-form-label  py-2 Align-items-center" method="POST" action="suppression.php" id ="suppression"> 
+
+                         <input type="hidden" id="recupid" name="recupextphoto"> <!--  input hidden pour récupérer la valeur de l'exension photo pour pouvoir  supprimer photo- -->
+
+                        <button type="submit" class="btn btn-primary" id="suppression" name="suppression" onclick="suppressionproduit()">Suppression du produit</button>
+
+                    </form>
+
+                    </div>
 <br>
 
 

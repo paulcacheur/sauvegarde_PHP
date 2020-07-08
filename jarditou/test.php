@@ -1,92 +1,156 @@
+<?php
+
+include("entete.php");
+
+require "connexionDB.php"; // Inclusion de notre bibliothèque de fonctions
 
 
-<!-- BOUTON BLOQUE  -->
+// une requete PDO Représente une requête préparée et, une fois exécutée, le jeu de résultats associé.
 
-      
-<div class="row form-group my-2 mx-auto ">
+$db = connexionBase(); // Appel de la fonction de connexion en PDO
+var_dump($db);
 
-<label for="boutonbloque" class="col-sm-2 col-form-label">Produit bloqué:</label>
+$requete = "SELECT * FROM produits"; //  FORMULE LA REQUETE
+var_dump($requete);
 
-<div class="form-check form-check-inline">
-<input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque1" value="oui" checked ="<?php echo $checked;?>">
-<label class="form-check-label" for="radiobloque1">Oui</label>
-</div>
+$result = $db->query($requete); // EXECUTE LA REQUETE PDO::query — Exécute une requête SQL, retourne un jeu de résultats en tant qu'objet PDOStatement
+var_dump($result);
 
+$produit = $result->fetch(PDO::FETCH_OBJ); // RECUPERE LES DONNEES - FETCH = méthode de récupération, Renvoi de l'enregistrement sous forme d'un objet
+var_dump($produit);
 
-<div class="form-check form-check-inline">
-<input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque2" value="Non" checked ="<?php ech$checked1;?>">
-<label class="form-check-label" for="radiobloque2">Non </label>
-</div>
+$produit = $result->fetch(PDO::FETCH_NAMED); // Renvoi de l'enregistrement sous forme d'un tableau
+var_dump($produit);
 
-
-<!-- <input class="form-check-input" type="hidden" name="valeurbloque" id="valeurbloque" value= > -->
-
-
-if ($_POST['nom'] == "")
-$this->msgs['nom'] = "le nom doit etre entr&eacute;.";
-
-if (empty($this->msgs)) 
+/*foreach($db->query('SELECT * from produits') as $row) 
 {
+  print_r($row);
+}
+*/
 
 
-/*
-if ($session->userinfo['option'] == 1) echo "checked=\"checked\""; ?> />
-                Option 1</label>
-              <br />
-              <label>
-                <input type="radio" name="option" id="option2" value="2" <?php if ($session->userinfo['option'] == 2) echo "checked=\"checked\""; ?> />
-               option 2</label>
+// Formulaire Photo
+
+'
+<div class="row form-group  my-2 mx-auto">
+<label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">photo:</label>
+        <div class="col-sm-12 px-0">
+        <input type="file" name="fichier" id="photo"  placeholder="photo"> 
+        </div>
+</div>'
+
+
+// verirication qu'il n'y a pas d'erreur
+
+
+if (sizeof($_FILES["fichier"]["error"]) > 0) 
+    { 
+      echo "ok"; 
+    } 
+    else
+    {
+      echo "pas ok";
+    }
+
+                  // VERIFICAITON QU'une image importée est correcte
+
+//PHP fournit un extension nommée FILE_INFO qui fait référence en termes de sécurité. Voici comment l'utiliser, pour un type :
+
+// On met les types autorisés dans un tableau (ici pour une image)
+$tabextensionmimetype = array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
+
+// On extrait le type du fichier via l'extension FILE_INFO 
+$finfo = finfo_open(FILEINFO_MIME_TYPE);
+$mimetype = finfo_file($finfo, $_FILES["fichier"]["tmp_anciennom"]);
+finfo_close($finfo);
+
+if (in_array($mimetype, $tabextensionmimetype))
+{
+    /* Le type est parmi ceux autorisés, donc OK, on va pouvoir  déplacer et renommer le fichier */
+
+} 
+else 
+{
+   // Le type n'est pas autorisé, donc ERREUR
+
+   echo "Type de fichier non autorisé";    
+   exit;
+}    
+
+
+
+//déplacerle fichier:  fichier (de type image) de tmp vers un répertoire nommé images d'un projet :
+
+move_uploaded_file($_FILES["fichier"]["tmp_name"], "public/images/photo.jpg");      
+
+//  et renomme le  fichier
+//// Lit le dernier dossier dans le chemin $_FILES["fichier"]["nouveaunom"] 
+
+$extension = substr(strrchr($_FILES["fichier"]["nouveaunom"], "."), 1); //strrchr trouve la première occurence commanceant par "." Vs substr = retourne un segment de chaine
+
+
+
+// DROIT D'UTILISATION
+// Lecture et écriture pour le propriétaire, lecture pour les autres - r(ead) -4 / w(rite)-2 / x(xecute)-1
+// user 6, group 4 et world 4
+chmod("/somedir/somefile", 0644);
 
 
 
 
-               function editAccount( $nom , $option )
-      {
-          global $db, $messagOk, $messagAlert, $showMessag;
-           $nom = traitement($nom);
-           $option = traitement($option);
- 
-                if ($_POST['nom'] == "")
-              $this->messags['nom'] = "Le nom  doit etre renseigné. Entrez svp un nom. Entrez cette information.";
- 
- 
-                if ($_POST['option'] == "")
-              $this->messags['option'] = "l'une des options doit etre renseigné. Entrez svp les informations. .";
- 
-               if (empty($this->messags)) {
-              $email = traitement($_POST['email']);
-              $name = traitement($_POST['name']);
- 
- 
-              if ($_POST['nom'] == "")
-              $this->messags['nom'] = "Le nom  doit etre renseigné. Entrez svp un nom.";  
- 
- 
-                if ($_POST['option'] == "")
-              $this->messags['option'] = "l'une des options doit etre renseigné. Entrez svp les informations."; 
- 
- 
-              $data = array(
- 
-                      'name' => $name, 
-                      'password' => $upass,
- 
-                       'notify' => intval($_POST['notify'])
-                      );
- 
-              $db->update("users", $data, "id = '" . $userrow['id'] . "'");
- 
-              if ($db->affected()) {
-                  redirect_to("index.php?do=profil&updated");
-              } else
-                  $messagAlert = "<span>Alert!</span> Rien &agrave; modifier !";
-          } else {
-              $showMessag = "<div class=\"messagError\"><span>ATTENTION DES INFORMATIONS OBLIGATOIRES N&acute;ONT PAS &Eacute;T&Eacute; ENTR&Eacute;ES ! :</span><ul class=\"error\">";
-              foreach ($this->messags as $messag) {
-                  $showMessag .= "<li>" . $messag . "</li>\n";
-              }
-              $showMessag .= '</ul></div>';
-          }
-          return true;
-      } 
-      */
+/*Exemple #2 Validation de téléchargement de fichiers
+
+          <?php
+                    $uploaddir = '/var/www/uploads/';
+                    $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+
+                    echo '<pre>';
+                    if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+                        echo "Le fichier est valide, et a été téléchargé
+                              avec succès. Voici plus d'informations :\n";
+                    } else {
+                        echo "Attaque potentielle par téléchargement de fichiers.
+                              Voici plus d'informations :\n";
+                    }
+
+                    echo 'Voici quelques informations de débogage :';
+                    print_r($_FILES);
+
+                    echo '</pre>';
+
+          ?>
+
+
+           Le fichier uploadé est disponible via le tableau global $_FILES ($HTTP_POST_FILES si vous êtes avec php < 4.1.0) ou directement avec le nom que l'on a donné au formulaire si registar_globals est fixé à on dans la configuration de php.
+Nous avons alors les variables suivantes (avec ici "fichier" pour le nom du champ de type file) :
+
+                $_FILES['fichier']['name']
+                    Contient le nom d'origine du fichier 
+
+                $_FILES['fichier']['tmp_name']
+                    Nom temporaire du fichier dans le dossier temporaire du système 
+
+                $_FILES['fichier']['type']
+                    Contient le type MIME du fichier 
+
+                $_FILES['fichier']['size']
+                    Contient la taille du fichier en octets 
+                    
+                $_FILES['fichier']['error']
+                    Code de l'erreur (le cas échéant) (disponible à partir de php 4.2.0) 
+*/
+
+?>
+
+
+<!-- Exemple #1 Formulaire de chargement de fichier -->
+
+ex de codage HTML de loading de fichier
+<!-- Le type d'encodage des données, enctype, DOIT être spécifié comme ce qui suit -->
+<form enctype="multipart/form-data" action="_URL_" method="post">
+  <!-- MAX_FILE_SIZE doit précéder le champ input de type file -->
+  <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+  <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
+  Envoyez ce fichier : <input name="userfile" type="file" />
+  <input type="submit" value="Envoyer le fichier" />
+</form>

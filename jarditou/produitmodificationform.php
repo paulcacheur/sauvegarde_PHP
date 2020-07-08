@@ -20,16 +20,16 @@
 
 <a>FORMULAIRE DE MODIFICATION DE PRODUIT</a>
 
-<form class="col-12  px-0" action="produitmodification.php" method="POST">
+<form class="col-12  px-0" action="produitmodification.php" method="POST" enctype="multipart/form-data">
 
   <div class="border border-black my-2" id="produitmodificationform">
 
                       <!-- Formulaire ID -->
 
       <div class="row form-group  my-2 mx-auto">
-        <label for="ID" class="  col-sm-12 col-form-label align-self-center py-2">ID:</label>
+        <label for="id" class="  col-sm-12 col-form-label align-self-center py-2">ID:</label>
                 <div class="col-sm-12 px-0">
-                <input type="text"  class="form-control-plaintext py-2 border" id="ID" name="ID" value="<?php echo $_POST['id'];?>" readonly>
+                <input type="text"  class="form-control-plaintext py-2 border" id="id" name="id" value="<?php echo $_POST['id'];?>" readonly>
                 </div>
       </div>
 
@@ -43,12 +43,22 @@
       </div>
                         <!-- Formulaire Catégorie -->
 
-      <div class="row form-group  my-2 mx-auto">
-        <label for="categorie" class="  col-sm-12 col-form-label align-self-center py-2">Catégorie:</label>
-                <div class="col-sm-12 px-0">
-                <input type="text"  class=" form-control-plaintext py-2 border" id="categorie" name="categorie"value="<?php echo $_POST['categorie'];?>">
+        <div class="row form-group my-2 mx-auto">
+        <label for="categorie" class="col-sm-12 col-form-label align-self-center py-2" >catégorie</label>
+                <div class="col-12 px-0">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="categorie">
+                                <option selected>Veuillez sélectionner une catégorie</option>
+                                <?php 
+                                        $reponsecat = $db->query('SELECT DISTINCT cat_nom, cat_id FROM categories ORDER BY cat_id ASC');
+                                        $resultat = $reponsecat->fetch(PDO::FETCH_OBJ);
+                                        while ($resultat = $reponsecat->fetch())
+                {
+                        echo '<option value="' .$resultat['cat_id'].'" placeholder="'.$_POST['categorie'].'">' .$resultat['cat_nom']. '</option>';
+                } 
+                                ?>>
+                        </select>
                 </div>
-      </div>
+        </div>
 
                      <!-- Formulaire Libellé -->
 
@@ -71,7 +81,7 @@
                      <!-- Formulaire Prix -->
 
       <div class="row form-group  my-2 mx-auto">
-        <label for="prix" class="  col-sm-12 col-form-label align-self-center py-2">Prix:</label>
+        <label for="prix" class="  col-sm-12 col-form-label align-self-center py-2">Prix en Euros:</label>
                 <div class="col-sm-12 px-0">
                 <input type="text"  class=" form-control-plaintext py-2 border" id="prix" name="prix"value="<?php echo $_POST['prix'];?>">
                 </div>
@@ -95,15 +105,16 @@
                 </div>
       </div>
 
+                        <!-- Formulaire Photo -->
 
-                        <!-- Formulaire Photo A GERER PLUS TARD -->
 
-        <div class="row form-group  my-2 mx-auto">
-        <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">Photo:</label>
+                        <div class="row form-group  my-2 mx-auto">
+        <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">photo:</label>
                 <div class="col-sm-12 px-0">
-                <input type="text"  class=" form-control-plaintext py-2 border" id="photo" name="photo"  placeholder="photo">
+                <input type="file" name="photo" id="photo"  placeholder="photo"> 
                 </div>
       </div>
+
 
                         <!-- RECUPERATION DE LA VALEUR DU Formulaire RADIO BLOQUE DANS FICHIER DETAILS ET REAFFICHAGE DU BOUTON BLOQUE AVEC LA BONNE VALEUR-->
 
@@ -147,8 +158,6 @@
                 </div>
         </div>
 
-
-
                         <!-- BOUTONS submit pour Valider la modification du produit--> 
 
 
@@ -166,6 +175,7 @@
                         <!-- BOUTONS retour à l'accueil--> 
                         <button type="button" class="btn btn-primary" id="accueil" name="accueil" onclick="location.href='index.php'">Retour à l'accueil</button>
 
+
                         <!-- BOUTONS retour à l'accueil SANS FORM
                         <div class="  col-sm-6 col-form-label py-2 Align-items-between">
                                 <form action="index.php">
@@ -180,3 +190,36 @@
 
 
 </html>
+
+
+
+                                <!-- Formulaire Photo A GERER PLUS TARD
+
+                                <div class="row form-group  my-2 mx-auto">
+        <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">Photo:</label>
+                <div class="col-sm-12 px-0">
+                <input type="text"  class=" form-control-plaintext py-2 border" id="photo" name="photo"  placeholder="photo">
+                </div>
+      </div> 
+      
+      -->
+
+
+                              <!-- Formulaire Catégorie BACK UP-->
+
+                              <div class="row form-group my-2 mx-auto">
+        <label for="categorie" class="col-sm-12 col-form-label align-self-center py-2" >catégorie*</label>
+                <div class="col-12 px-0">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="categorie">
+                                <option selected>Veuillez sélectionner une catégorie</option>
+                                <?php 
+                                        $reponsecat = $db->query('SELECT DISTINCT cat_nom, cat_id FROM categories ORDER BY cat_id ASC');
+                                        $resultat = $reponsecat->fetch(PDO::FETCH_OBJ);
+                                        while ($resultat = $reponsecat->fetch())
+                {
+                        echo '<option value="' .$resultat['cat_id'].'">' .$resultat['cat_nom']. '</option>';
+                } 
+                                ?>>
+                        </select>
+                </div>
+        </div>

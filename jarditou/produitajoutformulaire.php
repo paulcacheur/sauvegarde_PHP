@@ -15,7 +15,7 @@
 
 <a>FORMULAIRE D'AJOUT DE PRODUIT</a>
 
-<form class="col-12  px-0" method="POST" action="produitajoutscript.php">  <!-- DEBUT DU FORMULAIRE -->
+<form class="col-12  px-0" method="POST" action="produitajoutscript.php" enctype="multipart/form-data">   <!-- DEBUT DU FORMULAIRE -->
 
 
 <div class="border border-black my-2" id="1ere partie formulaire">
@@ -24,12 +24,23 @@
 
                         <!-- Formulaire Catégorie -->
 
-                                  <div class="row form-group  my-2 mx-auto">
-        <label for="categorie" class="  col-sm-12 col-form-label align-self-center py-2">Catégorie:</label>
-                <div class="col-sm-12 px-0">
-                <input type="text"  class=" form-control-plaintext py-2 border" id="categorie" name="categorie" placeholder="categorie">
+         <div class="row form-group my-2 mx-auto">
+                <label for="categorie" class="col-sm-12 col-form-label align-self-center py-2" >catégorie*</label>
+                <div class="col-12 px-0">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="categorie">
+                                <option selected>Veuillez sélectionner une catégorie</option>
+                                <?php 
+                                        $reponsecat = $db->query('SELECT DISTINCT cat_nom, cat_id FROM categories ORDER BY cat_id ASC');
+                                        $resultat = $reponsecat->fetch(PDO::FETCH_OBJ);
+                                        while ($resultat = $reponsecat->fetch())
+                {
+                        echo '<option value="' .$resultat['cat_id'].'">' .$resultat['cat_nom']. '</option>'; 
+                } 
+                                ?>>
+                        </select>
                 </div>
-      </div>
+        </div>
+
 
                       <!-- Formulaire Référence -->
 
@@ -62,7 +73,7 @@
                      <!-- Formulaire Prix -->
 
       <div class="row form-group  my-2 mx-auto">
-        <label for="prix" class="  col-sm-12 col-form-label align-self-center py-2">Prix:</label>
+        <label for="prix" class="  col-sm-12 col-form-label align-self-center py-2">Prix en Euros:</label>
                 <div class="col-sm-12 px-0">
                 <input type="text"  class=" form-control-plaintext py-2 border" id="prix" name="prix"placeholder="prix">
                 </div>
@@ -86,13 +97,13 @@
                 </div>
       </div>
 
-                        <!-- Formulaire Photo A GERER PLUS TARD -->
+                        <!-- Formulaire Photo -->
 
 
         <div class="row form-group  my-2 mx-auto">
         <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">photo:</label>
                 <div class="col-sm-12 px-0">
-                <input type="text"  class=" form-control-plaintext py-2 border" id="photo" name="photo"  placeholder="photo">
+                <input type="file" name="photo" id="photo"  placeholder="photo"> 
                 </div>
       </div>
 
@@ -146,3 +157,11 @@
 
 
 </html>
+<!-- back up catégorie
+                                  <div class="row form-group  my-2 mx-auto">
+        <label for="categorie" class="  col-sm-12 col-form-label align-self-center py-2">Catégorie:</label>
+                <div class="col-sm-12 px-0">
+                <input type="text"  class=" form-control-plaintext py-2 border" id="categorie" name="categorie" placeholder="categorie">
+                </div>
+      </div>
+       -->
