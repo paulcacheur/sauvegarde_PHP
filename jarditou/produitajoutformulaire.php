@@ -13,14 +13,21 @@
         ?>
 
 
-<a>FORMULAIRE D'AJOUT DE PRODUIT</a>
+                                                        <!-- ****** -->
 
-<form class="col-12  px-0" method="POST" action="produitajoutscript.php" enctype="multipart/form-data">   <!-- DEBUT DU FORMULAIRE -->
+<a>FORMULAIRE D'AJOUT DE PRODUIT</a>                 <!-- DEBUT DU FORMULAIRE -->
+
+                                                        <!-- ****** -->
+
+<form class="col-12  px-0" method="POST" action="produitajoutscript.php" enctype="multipart/form-data"> 
 
 
 <div class="border border-black my-2" id="1ere partie formulaire">
 
+
                         <!-- Formulaire ID non nécessaire car auto increment -->
+
+                        
 
                         <!-- Formulaire Catégorie -->
 
@@ -52,7 +59,7 @@
       </div>
 
 
-                     <!-- Formulaire libelle -->
+                      <!-- Formulaire libelle -->
 
       <div class="row form-group  my-2 mx-auto">
         <label for="libelle" class="  col-sm-12 col-form-label align-self-center py-2">libelle:</label>
@@ -132,8 +139,12 @@
 
 </div>
 
+                                                        <!-- ****** -->
 
-                                         <!-- LES BOUTONS -->
+                                                      <!-- LES BOUTONS -->
+
+                                                        <!-- ****** -->
+
 
 
 <!-- bouton SMBMIT ENVOIE DANS LE FICHIER produits_ajout.php"> --> 
@@ -143,7 +154,7 @@
 
 
 <!-- BOUTON retour à l'accueil--> 
-        <button type="button" class="btn btn-primary" id="accueil" name="accueil" onclick="location.href='index.php'">Retour à l'accueil</button>
+        <button type="button" class="btn btn-primary" id="accueil" name="accueil" onclick="location.href='liste.php'">Retour à l'accueil</button>
 
 
 </div>
@@ -151,12 +162,22 @@
 
 
 
+<!-- ****** -->
+
+</form>                                        <!-- FIN DU FORMULAIRE -->
+
+<!-- ****** -->
 
 
-</form> <!-- FIN DU FORMULAIRE -->
 
 
-</html>
+        <!-- FOOTER -->
+        
+        <?php
+        include("piedpage.php");
+        ?>
+
+
 <!-- back up catégorie
                                   <div class="row form-group  my-2 mx-auto">
         <label for="categorie" class="  col-sm-12 col-form-label align-self-center py-2">Catégorie:</label>

@@ -18,9 +18,21 @@
               $produit = $result->fetch(PDO::FETCH_OBJ);
         ?>
 
-                        <!-- DEBUT DE FORMULAIRE -->
+
+
+                                                <!-- ****** -->
+
+<a>DETAIL DU PRODUIT</a>                  <!-- DEBUT DU FORMULAIRE -->
+
+                                                <!-- ****** -->
+
+
 
 <form class="col-12 px-0" method="POST" action="produitmodificationform.php" id ="formulairedetail"> 
+
+  <div class="border border-black my-2" id="produitdetail">
+
+
 
                       <!-- Formulaire ID -->  
 
@@ -103,6 +115,8 @@
             
                 </div>
         </div>
+      </div>
+
 
                           <!-- BOUTON BLOQUE  -->
 
@@ -112,6 +126,7 @@
       <label for="boutonbloque" class="col-sm-2 col-form-label">Produit bloqué:</label>
 
             <div class="form-check form-check-inline">
+
               <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque1" value="1"
                                             <?php 
                                             // ETAPE 2 = attribuer la valeur de la variable
@@ -123,10 +138,12 @@
                                             ?>
               >
               <label class="form-check-label" for="radiobloque1">Oui</label>
+
             </div>
 
 
             <div class="form-check form-check-inline">
+
               <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque2" value="0"
 
                                             <?php 
@@ -150,25 +167,21 @@
                                           <!-- LES BOUTONS DU FORMULAIRE --> 
 
 
-      <div class="row form-group  my-2 mx-auto">
+      <div class="row form-group  my-2 mx-auto text-center">
 
                 <!-- BOUTON MODIFICATION--> 
 
-                        <div class="  col-sm-6 col-form-label py-2 Align-items-between">
+                        <div class="  col-sm-6 col-form-label py-2">
 
                               <button type="submit" class="btn btn-primary" id="submitmodifform" name="submitmodifform">Modification du produit</button>
 
                         </div>
-   
-
-
-
 
               <!-- BOUTON RETOUR A L'ACCUEIL  -->
 
-                      <div class="  col-sm-6 col-form-label  py-2 Align-items-center">
+                      <div class="  col-sm-6 col-form-label  py-2">
 
-                      <button type="button" class="btn btn-primary" id="accueil" name="accueil" onclick="location.href='index.php'">Retour à l'accueil</button>
+                      <button type="button" class="btn btn-primary" id="accueil" name="accueil" onclick="location.href='liste.php'">Retour à la liste</button>
 
                       </div>
 
@@ -176,7 +189,7 @@
 
                         <div class=" col-sm-4 col-form-label  py-2 Align-items-center">
 
-                        <form method="POST" action="index.php">
+                        <form method="POST" action="liste.php">
                           <button type="submit" class="btn btn-primary" id="accueil" name="accueil">Retour a l'accueil</button>
                         </form>--> 
 
@@ -184,7 +197,7 @@
       </div>
 
 
-                <div class="row form-group my-2 ml-5  ">
+                <div class="row form-group my-2 ml-4 ">
 
                         <div class="col-12 col-form-label ">
               <a>Date d'ajout: </a> <?php echo $produit->pro_d_ajout;?>
@@ -192,7 +205,7 @@
                 </div>
 
 
-                <div class="row form-group my-2 ml-5 ">
+                <div class="row form-group my-2 ml-4 ">
                         <div class="col-12 col-form-label ">
               <a>Date de modification: </a><?php echo $produit->pro_d_modif;?>
                         </div>
@@ -204,16 +217,16 @@
 
                     <!-- BOUTON SUPPRESSION dans un formulaire  à part pour envoyer les données dans suppression.php--> 
 
-                  <div class="row form-group my-2 mx-auto ">
+                  <div class="row form-group my-2 mx-auto text-center">
 
-                    <form class="col-sm-12 px-0 col-form-label  py-2 Align-items-center" method="POST" action="suppression.php" id ="suppression"> 
 
-                        <input type="hidden" id="recupextphoto" name="recupextphoto" value="<?php echo $produit->pro_photo;?>"> <!--  input hidden pour récupérer la valeur de l'extension photo pour pouvoir supprimer photo- -->
-                        <input type="hidden" id="recuppro_id" name="recuppro_id" value="<?php echo $produit->pro_id;?>"> <!--  input hidden pour récupérer la valeur de l'extension photo pour pouvoir supprimer photo- -->
-
-                        <button type="submit" class="btn btn-primary" id="suppression" name="suppression" onclick="suppressionproduit()">Suppression du produit</button>
-
-                    </form>
+                        <form class="col-sm-12 px-0 col-form-label  py-2"  method="POST" action="suppression.php" id ="suppression"> 
+                            <div >
+                            <input type="hidden" id="recupextphoto" name="recupextphoto" value="<?php echo $produit->pro_photo;?>"> <!--  input hidden pour récupérer la valeur de l'extension photo pour pouvoir supprimer photo- -->
+                            <input type="hidden" id="recuppro_id" name="recuppro_id" value="<?php echo $produit->pro_id;?>"> <!--  input hidden pour récupérer la valeur de l'extension photo pour pouvoir supprimer photo- -->
+                            <button type="submit" class="btn btn-primary" id="suppression" name="suppression" onclick="suppressionproduit()">Suppression du produit</button>
+                            </div>
+                        </form>
 
                   </div>
 <br>

@@ -155,7 +155,7 @@ else
                                         // tranfert  PHOTO
         
 
-        var_dump($_FILES); // visualisation des caractéristiques de l'image, mis en commentaire
+        // var_dump($_FILES); // visualisation des caractéristiques de l'image, mis en commentaire
 
 
         $nominitialimage = $_FILES['photo']['name']; // variable nom de l'image initiale
@@ -275,8 +275,7 @@ if ($check01 = $check02 = $check03 = $check04 = $check05 = $check06 = $check07 =
         $requete->bindValue(":pro_d_ajout", $tab["ajout"]);
         $requete->bindValue(":pro_bloque", $tab["boutonbloque"]);
         $requete->execute();
-
-        header('Location: index.php'); // retour vers la page index de la liste
+        header('Location: liste.php'); // retour vers la page liste de la liste
         }
 else
         {

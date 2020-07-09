@@ -17,8 +17,11 @@
 
 
         ?>
+                                                <!-- ****** -->
 
-<a>FORMULAIRE DE MODIFICATION DE PRODUIT</a>
+<a>FORMULAIRE DE MODIFICATION DE PRODUIT</a>  <!-- FORMULAIRE -->
+
+                                                <!-- ****** -->
 
 <form class="col-12  px-0" action="produitmodification.php" method="POST" enctype="multipart/form-data">
 
@@ -122,12 +125,14 @@
                         <!-- Formulaire Photo (chargement image) -->
 
 
-                        <div class="row form-group  my-2 mx-auto">
-        <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">Chargement de la photo:</label>
+        <div class="row form-group  my-2 mx-auto">
+           <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">Chargement de la photo:</label>
                 <div class="col-sm-12 px-0">
                 <input type="file" name="photo" id="photo"  placeholder="photo"> 
                 </div>
       </div>
+
+
 
 
                         <!-- RECUPERATION DE LA VALEUR DU Formulaire RADIO BLOQUE DANS FICHIER DETAILS ET REAFFICHAGE DU BOUTON BLOQUE AVEC LA BONNE VALEUR-->
@@ -155,6 +160,7 @@
                                                                 ?>
                 >
                 <label class="form-check-label" for="radiobloque1">Oui</label>
+
                 </div>
 
                 <div class="form-check form-check-inline">
@@ -172,12 +178,21 @@
                 </div>
         </div>
 
-                        <!-- BOUTONS submit pour Valider la modification du produit--> 
+
+        </div>
+
+<!-- ****** -->
+
+</form>                                        <!-- FIN 1er FORMULAIRE -->
+
+<!-- ****** -->
+
+                         <!-- BOUTONS submit pour Valider la modification du produit FORM A PART -->
 
 
-              <div class="row form-group  my-2 mx-auto">
+              <div class="row form-group  my-2 mx-auto text-center">
 
-                        <div class="  col-sm-6 col-form-label py-2 Align-items-between">
+                        <div class="  col-sm-6 col-form-label py-2">
 
                             <form method="POST" action="produitmodification.php">
                               <button type="submit" class="btn btn-primary" id="submitmodifform" name="submitmodifform">Valider la modification</button>
@@ -185,26 +200,31 @@
 
                         </div>
                         
-                        <div class="  col-sm-6 col-form-label py-2 Align-items-between">
+                        <div class="  col-sm-6 col-form-label py-2">
+
+
                         <!-- BOUTONS retour à l'accueil--> 
-                        <button type="button" class="btn btn-primary" id="accueil" name="accueil" onclick="location.href='index.php'">Retour à l'accueil</button>
+
+                        <button type="button" class="btn btn-primary" id="accueil" name="accueil" onclick="location.href='liste.php'">Retour à la liste</button>
 
 
                         <!-- BOUTONS retour à l'accueil SANS FORM
                         <div class="  col-sm-6 col-form-label py-2 Align-items-between">
-                                <form action="index.php">
+                                <form action="liste.php">
                                 <button type="submit" class="btn btn-primary" id="accueil" name="accueil" >Retour a l'accueil</button>
                                 </form>--> 
                         </div>
                 </div>
 
             </div>
-    </div>
 
 
 
-</html>
-
+        <!-- FOOTER -->
+        
+        <?php
+        include("piedpage.php");
+        ?>
 
 
                                 <!-- Formulaire Photo A GERER PLUS TARD

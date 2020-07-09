@@ -31,7 +31,7 @@
                         unlink("public/images/$recuppro_id.$extensionphoto"); // supprimer la photo dans le dossier source
                 }
 
-                header('Location: index.php'); // redirection sur la page index
+                header('Location: liste.php'); // redirection sur la page liste
 
 
 ?>

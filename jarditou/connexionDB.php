@@ -13,13 +13,16 @@ function connexionBase()
    */
 
    try 
+
         {
 // Connexion au serveur MySql via la variable $db
                 $db = new PDO('mysql:host=localhost;charset=utf8;dbname=jarditou;port=3308', 'root', '');
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 return $db;
         } 
+        
     catch (Exception $e) 
+
         {
                 echo 'Erreur : ' . $e->getMessage() . '<br>';
                 echo 'N° : ' . $e->getCode() . '<br>';

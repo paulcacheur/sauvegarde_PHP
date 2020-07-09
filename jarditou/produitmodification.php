@@ -252,7 +252,9 @@ if ($check01 = $check02 = $check03 = $check04 = $check05 = $check06 = $check07 =
         $requete->bindValue(":pro_d_modif", $tab["modification"]);
         $requete->bindValue(":pro_bloque", $tab["boutonbloque"]);
         $requete->execute();
-        header('Location: index.php');
+
+
+        header('Location: liste.php'); // redirection vers liste.php
         }
 else
         {
