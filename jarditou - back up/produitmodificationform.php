@@ -17,11 +17,11 @@
 
 
         ?>
+                                                <!-- ****** -->
 
+<a>FORMULAIRE DE MODIFICATION DE PRODUIT</a>  <!-- FORMULAIRE -->
 
-<a>FORMULAIRE DE MODIFICATION DE PRODUIT</a>               <!--//? DEBUT DU FORMULAIRE -->
-
-
+                                                <!-- ****** -->
 
 <form class="col-12  px-0" action="produitmodification.php" method="POST" enctype="multipart/form-data">
 
@@ -46,10 +46,10 @@
       </div>
                         <!-- Formulaire Catégorie -->
 
-        <div class="row form-group my-2 mx-auto d-none" >
+        <div class="row form-group my-2 mx-auto">
         <label for="categorie" class="col-sm-12 col-form-label align-self-center py-2" >catégorie</label>
                 <div class="col-12 px-0">
-                        <select class="custom-select mr-sm-2" id="categorie" name="categorie">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="categorie">
                                <option selected> <?php echo $_POST['categorie']; ?></option>   <!-- reporte la catégorie reportée -->
                                 <?php 
                                         $reponsecat = $db->query('SELECT DISTINCT cat_nom, cat_id FROM categories ORDER BY cat_id ASC');
@@ -133,14 +133,16 @@
       </div>
 
 
+
+
                         <!-- RECUPERATION DE LA VALEUR DU Formulaire RADIO BLOQUE DANS FICHIER DETAILS ET REAFFICHAGE DU BOUTON BLOQUE AVEC LA BONNE VALEUR-->
 
-                                                <?php 
-                                                // variable créee dans un "hidden" input dans le fichier details
-                                                //Si la variable $_POST['variablecheck'] existe, alors $valeurbloquereport = $_POST['variablecheck']  sinon elle vaut NULL 
-                                                $valeurbloquereport = isset($_POST['variablecheck']) ? $_POST['variablecheck'] : NULL;
+                                                                <?php 
+                                                                // variable créee dans un "hidden" input dans le fichier details
+                                                                //Si la variable $_POST['variablecheck'] existe, alors $valeurbloquereport = $_POST['variablecheck']  sinon elle vaut NULL 
+                                                                $valeurbloquereport = isset($_POST['variablecheck']) ? $_POST['variablecheck'] : NULL;
 
-                                                ?>
+                                                                ?>
 
       <div class="row form-group my-2 mx-auto ">
 
@@ -149,13 +151,13 @@
                 <div class="form-check form-check-inline">
 
                 <input class="form-check-input" type="radio" name="boutonbloque" id="radiobloque1" value="1"
-                
-                                                <?php 
-                                                if ($valeurbloquereport == 1) // variable créee dans un "hidden" input dans le fichier details
-                                                {
-                                                echo "checked";
-                                                }
-                                                ?>
+                                                                <?php 
+                                                                if ($valeurbloquereport == 1) // variable créee dans un "hidden" input dans le fichier details
+                                                                {
+                                                                echo "checked";
+                                                                }
+
+                                                                ?>
                 >
                 <label class="form-check-label" for="radiobloque1">Oui</label>
 
@@ -179,12 +181,11 @@
 
         </div>
 
+<!-- ****** -->
 
+</form>                                        <!-- FIN 1er FORMULAIRE -->
 
-
-
-
-                                        <!--//? BOUTONS DU FORMULAIRE -->
+<!-- ****** -->
 
                          <!-- BOUTONS submit pour Valider la modification du produit FORM A PART -->
 
@@ -193,8 +194,9 @@
 
                         <div class="  col-sm-6 col-form-label py-2">
 
-
+                            <form method="POST" action="produitmodification.php">
                               <button type="submit" class="btn btn-primary" id="submitmodifform" name="submitmodifform">Valider la modification</button>
+                            </form>
 
                         </div>
                         
@@ -215,8 +217,6 @@
                 </div>
 
             </div>
-</form>     
-                                   <!--//? FIN 1er FORMULAIRE -->
 
 
 

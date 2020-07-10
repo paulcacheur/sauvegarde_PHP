@@ -180,8 +180,9 @@ else
 
         //var_dump($id);
 
-        // move_uploaded_file($_FILES["photo"]["tmp_name"], "./public/images/$resultmaxidetun.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu, nom du max id + 1. extension
-        move_uploaded_file($_FILES["photo"]["tmp_name"], "public/images/$resultmaxidetun.$extensionfichier"); 
+        move_uploaded_file($_FILES["photo"]["tmp_name"], "public/images/$resultmaxidetun.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu, nom du max id + 1. extension
+
+
 /*
                 $_FILES['fichier']['name']
                     Contient le nom d'origine du fichier 

@@ -252,3 +252,15 @@
         include("piedpage.php");
         ?>
 
+<!--  syntaxe ajout 
+
+
+ require ("connexion_bdd.php");
+    $db = connexionBase();
+
+
+    $requete = $db->prepare('INSERT INTO `produits` (`pro_ref`, `pro_cat_id`, `pro_libelle`, `pro_description`, `pro_prix`, `pro_stock`, `pro_couleur`, `pro_photo`, `pro_d_ajout`, `pro_d_modif`, `pro_bloque`) VALUES
+  (:pro_ref, :pro_cat_id, :pro_libelle, :pro_description, :pro_prix, :pro_stock, :pro_couleur, :pro_photo, :pro_d_ajout, :pro_d_modif, :pro_bloque);');
+
+
+-->

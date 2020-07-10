@@ -147,6 +147,7 @@ else
                 if (in_array($mimetype, $extMimeTypes))
                         {
                                 $check08 = true; // Le type est parmi ceux autorisés, donc , on va pouvoir déplacer et renommer le fichier 
+                      
                         } 
                 else 
                         {
@@ -161,14 +162,13 @@ else
 
 
         $nominitialimage = $_FILES['photo']['name']; // variable nom de l'image initiale
-        // var_dump($nominitialimage);
+        //var_dump($nominitialimage);
 
         $extensionfichier = pathinfo($nominitialimage, PATHINFO_EXTENSION); // variable pour capturer l'extension du fichier
-        // var_dump($extensionfichier);
+        //var_dump($extensionfichier);
 
-        // var_dump($id);
+        //var_dump($id);
 
-        // move_uploaded_file($_FILES["photo"]["tmp_name"], "./public/images/$id.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu
         move_uploaded_file($_FILES["photo"]["tmp_name"], "public/images/$id.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu
 
 
