@@ -16,7 +16,7 @@
 
 
 
-                                                    <!--//? DEBUT DU FORMULAIRE -->
+                                                    <!--//bl DEBUT DU FORMULAIRE -->
 
 
 
@@ -154,7 +154,7 @@
 
 
 
-                                                 <!--//? BOUTONS SUBMIT ET RESET -->
+                                                 <!--//bl BOUTONS SUBMIT ET RESET -->
 
 
 
@@ -191,7 +191,7 @@
 
     </form>
 
-                                                 <!--//? FIN DU FORMULAIRE -->
+                                                 <!--//bl FIN DU FORMULAIRE -->
 
 
 

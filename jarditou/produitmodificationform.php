@@ -1,6 +1,6 @@
 
 
-        <!-- EN TETE -->
+                                                        <!--//bl EN TETE -->
 
         <?php
 
@@ -15,11 +15,10 @@
               // Renvoi de l'enregistrement sous forme d'un objet
               $produit = $result->fetch(PDO::FETCH_OBJ);
 
-
         ?>
 
 
-<a>FORMULAIRE DE MODIFICATION DE PRODUIT</a>               <!--//? DEBUT DU FORMULAIRE -->
+<a>FORMULAIRE DE MODIFICATION DE PRODUIT</a>        <!--//bl DEBUT DU FORMULAIRE -->
 
 
 
@@ -210,7 +209,7 @@
 
 
 
-                                        <!--//? BOUTONS DU FORMULAIRE -->
+                                        <!--//bl BOUTONS DU FORMULAIRE -->
 
                          <!-- BOUTONS submit pour Valider la modification du produit FORM A PART -->
 
@@ -242,9 +241,9 @@
 
             </div>
 </form>     
-                                   <!--//? FIN 1er FORMULAIRE -->
+                                   <!--//bl FIN  FORMULAIRE -->
 
-        <!-- FOOTER -->
+                                        <!--//bl  FOOTER -->
         
         <?php
         include("piedpage.php");

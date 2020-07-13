@@ -1,5 +1,5 @@
 
-        <!-- EN TETE -->
+                                                <!--//bl EN TETE -->
                   <?php
                   include("entete.php");
 
@@ -11,7 +11,7 @@
                   ?>
 
 
-        <!-- BODY -->
+                                                  <!--//bl BODY -->
 
 
                 <!-- boutons submit - ENVOIE DANS LE FICHIER produitmodificationform.php"> --> 
@@ -78,7 +78,7 @@
 
 
 
-        <!-- FOOTER -->
+                                                    <!--//bl FOOTER -->
         
         <?php
         include("piedpage.php");

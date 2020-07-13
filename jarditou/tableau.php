@@ -1,5 +1,5 @@
 
-                                                            <!-- EN TETE -->
+                                                            <!--//bl EN TETE -->
                                                             <?php
         include("entete.php");
         ?>
@@ -9,7 +9,7 @@
 
 
 
-                                                            <!-- CONTENU -->
+                                                            <!--//bl CONTENU -->
 
 
   <br>    
@@ -75,7 +75,7 @@
         <br>
         <br>
 
-        <!-- FOOTER -->
+                                                                <!-- //bl FOOTER -->
         
         <?php
         include("piedpage.php");

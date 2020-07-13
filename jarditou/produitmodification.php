@@ -1,5 +1,5 @@
 
-                                                        <!--//? EN TETE -->
+                                                        <!--//bl EN TETE -->
 
 <?php
 // post venant du fichier produitmoficiationform
@@ -11,7 +11,7 @@
 
 
 
-                                        // VALIDATION DU FORMULAIRE ID, cat, ref, lib, desc, prix, stock, couleur, photo, (ajout, modif), bloqué
+                                        // bl VALIDATION DU FORMULAIRE prododuitmodificationform
 
 
 // vérfie la validité champs du formulaire avec un booléen
@@ -24,7 +24,7 @@ var_dump($id);
 
         // check champ CATEGORIE: check nombre de 1 à 10 chffres
 
-                                        //todo ajout de catégorie (complément hors exercice)
+                                        //todo AJOUT DE CATEGORIE (complément hors exercice)
 
 
 $categorie = $_POST['categorie']; 
@@ -57,8 +57,6 @@ else
         }
 
         // check champ LIBELLE: check au moins un caractère et moins de 200
-
-                                //todo Libellé peut être le même sur la modif  (complément hors exercice)
 
 $libelle = $_POST['libelle'];
 
@@ -132,7 +130,6 @@ else
 
         }
 
-
         // check PHOTO
 
  
@@ -164,7 +161,7 @@ else
                                                 $extensionfichier = pathinfo($nominitialimage, PATHINFO_EXTENSION); // variable pour capturer l'extension du fichier
                                                 // var_dump($extensionfichier);
                                                 // var_dump($id);
-                                                // move_uploaded_file($_FILES["photo"]["tmp_name"], "./public/images/$id.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu
+                                                //move_uploaded_file($_FILES["photo"]["tmp_name"], "./public/images/$id.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu
                                                 move_uploaded_file($_FILES["photo"]["tmp_name"], "public/images/$id.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu
                                         } 
                                 else 
@@ -203,7 +200,7 @@ else
 
 
 
-                                        //?   VERIFICATION et MISE EN TABLEAU des variables 
+                                        //bl   VERIFICATION et MISE EN TABLEAU des variables 
 
 $tab = [];
 
@@ -246,7 +243,7 @@ if (isset($_POST["modification"]) || empty($_POST["modification"]))
 
 
 
-                                                //? MISE A JOUR DB
+                                                //bl MISE A JOUR DB
 
 
 if ($check01 = $check02 = $check03 = $check04 = $check05 = $check06 = $check07 = $check08 == true)
@@ -299,19 +296,4 @@ else
 
 
                                                              
-                                                                          
-<!-- // back up check champ PHOTO à GERER plus tard (< 4 caratères pour l'instant) 
-
-$photo = $_POST['photo']; 
-if (empty($photo) OR strlen($_POST['photo'])>4)
-        {
-                $check08 = false;
-                echo "une extension de photo doit être renseignée, chane de caractère de 1 à 4 caractères <br>";
-        }
-        else
-        {
-                $check08 = true;
-                echo"photo valide: $couleur<br><br>";
-        
-        }
--->
+ 

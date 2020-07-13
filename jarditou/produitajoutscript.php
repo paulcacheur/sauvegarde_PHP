@@ -1,6 +1,6 @@
 
 
-        <!-- EN TETE -->
+                                         <!-- //bl EN TETE -->
 
         <?php
 
@@ -12,7 +12,7 @@
               $db = connexionBase(); // Appel de la fonction de connexion
 
 
-                                                // VALIDATION DU FORMULAIRE ID, cat, ref, lib, desc, prix, stock, couleur, photo, ajout modif, bloqué
+                                        //bl VALIDATION DU FORMULAIRE ID, cat, ref, lib, desc, prix, stock, couleur, photo, ajout modif, bloqué
 
 
 // vérfie la validité champs du formulaire avec un booléen
@@ -116,7 +116,7 @@ else
         }
 
 
-                                                                // COULEUR: check 1 à 30 caractère
+        // COULEUR: check 1 à 30 caractère
 
 
 
@@ -135,7 +135,7 @@ else
 
 
 
-                                            // check PHOTO
+        // check PHOTO
 
 
 // On met les types autorisés dans un tableau (ici pour une image)
@@ -157,7 +157,7 @@ else
         exit;
         }
 
-                                        // tranfert  PHOTO
+        // tranfert  PHOTO
         
 
         // var_dump($_FILES); // visualisation des caractéristiques de l'image, mis en commentaire
@@ -217,7 +217,7 @@ else
                         echo "un bouton radio doit être coché <br>";
                 }
 
-                                        //   RECUPERATION, VERIFICATION et MISE EN TABLEAU des variables (pas besoin d'ID)
+                                        // bl RECUPERATION, VERIFICATION et MISE EN TABLEAU des variables (pas besoin d'ID)
 
 $tab = [];
 
@@ -257,7 +257,7 @@ if (isset($_POST["ajout"]) || empty($_POST["ajout"]))
 if (isset($_POST["boutonbloque"]))
         $tab["boutonbloque"] = $_POST["boutonbloque"];
 
-                                          // AJOUT DES DONNEES DANS LE FORMULAIRE SI LES DONNEES SONT VALIDES
+                                          // bl AJOUT DES DONNEES DANS LE FORMULAIRE SI LES DONNEES SONT VALIDES
 
 
 if ($check01 = $check02 = $check03 = $check04 = $check05 = $check06 = $check07 = $check08 == true)
@@ -290,7 +290,7 @@ else
   ?> 
 
 
-        <!-- FOOTER -->
+                                                <!-- //bl FOOTER -->
         
         <?php
         include("piedpage.php");

@@ -1,6 +1,6 @@
 
 
-                                                        <!--//? EN TETE -->
+                                                        <!--//bl EN TETE -->
 
         <?php
 
@@ -15,7 +15,7 @@
 
 
 
-<a>FORMULAIRE D'AJOUT DE PRODUIT</a>                 <!--//? DEBUT DU FORMULAIRE -->
+<a>FORMULAIRE D'AJOUT DE PRODUIT</a>                 <!--//bl DEBUT DU FORMULAIRE -->
 
 
 
@@ -161,13 +161,13 @@
 
 
 
-</form>                                                <!--//? FIN DU FORMULAIRE -->
+</form>                                                <!--//bl FIN DU FORMULAIRE -->
 
 
 
 
 
-                                                             <!--//? FOOTER -->
+                                                             <!--//bl FOOTER -->
         
         <?php
         include("piedpage.php");

@@ -1,6 +1,6 @@
 
 
-        <!-- EN TETE -->
+                                        <!-- //bl EN TETE -->
 
         <?php
 
@@ -21,7 +21,7 @@
 
 
 
-<a>DETAIL DU PRODUIT</a>                  <!--//? DEBUT DU FORMULAIRE -->
+<a>DETAIL DU PRODUIT</a>                  <!--//bl DEBUT DU FORMULAIRE -->
 
 
 
@@ -95,7 +95,7 @@
                 </div>
       </div>
 
-                           <!-- Formulaire Couleur -->
+                         <!-- Formulaire Couleur -->
 
       <div class="row form-group  my-2 mx-auto">
         <label for="couleur" class="  col-sm-12 col-form-label align-self-center py-2">Couleur:</label>
@@ -104,7 +104,7 @@
                 </div>
       </div>
 
-                              <!-- Formulaire extension photo -->
+                        <!-- Formulaire extension photo -->
 
 
         <div class="row form-group  my-2 mx-auto">
@@ -117,7 +117,7 @@
       </div>
 
 
-                          <!-- Bouton radio Bloqué   -->
+                        <!-- Bouton radio Bloqué   -->
 
       
       <div class="row form-group my-2 mx-auto ">
@@ -162,11 +162,9 @@
 
             </div>
       </div>
-                                                  <!--//? ****** --> 
 
-                                          <!--//? LES BOUTONS DU FORMULAIRE --> 
-                                          
-                                                <!--//? ****** --> 
+
+                                          <!--//bl LES BOUTONS DU FORMULAIRE HORS SUPPRESSION--> 
 
 
       <div class="row form-group  my-2 mx-auto text-center">
@@ -214,7 +212,7 @@
                 </div>
    
 
-      </form>                                       <!--//? FIN DU FORMULAIRE -->
+      </form>                                       <!--//bl FIN DU FORMULAIRE -->
 
 
 
@@ -226,14 +224,15 @@
 
 
                                     
-                        <!--//? BOUTON SUPPRESSION dans un formulaire  à part pour envoyer les données dans suppression.php--> 
+                                                <!--//bl BOUTON SUPPRESSION --> 
+                        <!-- dans un formulaire  à part pour envoyer les données dans suppression.php -->
 
 
 
                   <div class="row form-group my-2 mx-auto text-center">
 
 
-                        <form class="col-sm-12 px-0 col-form-label  py-2"  method="POST" action="suppression.php" id ="suppression"> 
+                        <form class="col-sm-12 px-0 col-form-label  py-2"  method="POST" action="suppression.php"> 
                             <div >
                             <input type="hidden" id="recupextphoto" name="recupextphoto" value="<?php echo $produit->pro_photo;?>"> <!--  input hidden pour récupérer la valeur de l'extension photo pour pouvoir supprimer photo- -->
                             <input type="hidden" id="recuppro_id" name="recuppro_id" value="<?php echo $produit->pro_id;?>"> <!--  input hidden pour récupérer la valeur de l'extension photo pour pouvoir supprimer photo- -->
@@ -246,7 +245,7 @@
 
 
 
-                                                          <!--//? FOOTER -->
+                                                          <!--//bl FOOTER -->
         
         <?php
         include("piedpage.php");
