@@ -46,26 +46,43 @@
       </div>
                         <!-- Formulaire Catégorie -->
 
-        <div class="row form-group my-2 mx-auto d-none" >
+        <div class="row form-group my-2 mx-auto" >
         <label for="categorie" class="col-sm-12 col-form-label align-self-center py-2" >catégorie</label>
                 <div class="col-12 px-0">
                         <select class="custom-select mr-sm-2" id="categorie" name="categorie">
-                               <option selected> <?php echo $_POST['categorie']; ?></option>   <!-- reporte la catégorie reportée -->
                                 <?php 
+                                        $numerocategorieproduitselectionnee = $_POST['categorie'];
+                                       
                                         $reponsecat = $db->query('SELECT DISTINCT cat_nom, cat_id FROM categories ORDER BY cat_id ASC');
                                         $resultat = $reponsecat->fetch(PDO::FETCH_OBJ);
-                                        while ($resultat = $reponsecat->fetch())
-                {
-                        echo '
-                                <option value="' .$resultat['cat_id'].'" placeholder="'.$_POST['categorie'].'">' .$resultat['cat_nom']. '</option>'; // donne  une liste de toutes les catégories disponibles
-                } 
-                                ?>>                               
-                                <option>Autre: </option>
 
+
+                                        while ($resultat = $reponsecat->fetch())
+                                                {
+                                                        if (strtolower($resultat['cat_id']) == strtolower($numerocategorieproduitselectionnee))
+                                                                {
+                                                                echo
+                                                                        '<option value="
+                                                                                '.$numerocategorieproduitselectionnee.'
+                                                                        " selected>
+                                                                                '.$resultat['cat_nom'].'
+                                                                        </option>';
+                                                                } 
+                                                        else 
+                                                                {
+                                                                echo
+                                                                        '<option value="
+                                                                                '.$resultat['cat_id'].'
+                                                                        ">
+                                                                                '.$resultat['cat_nom'].'
+                                                                        </option>'; // donne  une liste de toutes les catégories disponibles
+                                                                }
+                                                }
+                                ?>
+                                                                <option>Autre: </option>
                         </select>
                 </div>
         </div>
-
 
                      <!-- Formulaire Libellé -->
 
@@ -119,6 +136,7 @@
         <label for="photoext" class="  col-sm-12 col-form-label align-self-center py-2">Extension photo:</label>
                 <div class="col-sm-12 px-0">
                 <input type="text"  class=" form-control-plaintext py-2 border" id="photoext" name="photoext" value="<?php echo $_POST['photoext'];?>">
+        
                 </div>
       </div>
 
@@ -127,9 +145,17 @@
 
         <div class="row form-group  my-2 mx-auto">
            <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">Chargement de la photo:</label>
-                <div class="col-sm-12 px-0">
+                <div class="col-sm-6 px-0">
                 <input type="file" name="photo" id="photo"  placeholder="photo"> 
                 </div>
+        </div>
+
+                        <!-- Formulaire Report image enregistrée -->
+        <div class="row form-group  my-2 mx-auto">
+                <label for="photo" class="  col-sm-2 col-form-label align-self-center py-2">photo enregistrée pour ce produit:</label>
+                        <div class="col-sm-10 my-auto"> 
+                <img src="public/images/<?php echo $_POST['id'].'.'.$_POST['photoext'];?>" alt="image enregistree" class="img-fluid" id="imageenregistree" name="imageenregistree">
+                        </div>
       </div>
 
 
@@ -139,7 +165,6 @@
                                                 // variable créee dans un "hidden" input dans le fichier details
                                                 //Si la variable $_POST['variablecheck'] existe, alors $valeurbloquereport = $_POST['variablecheck']  sinon elle vaut NULL 
                                                 $valeurbloquereport = isset($_POST['variablecheck']) ? $_POST['variablecheck'] : NULL;
-
                                                 ?>
 
       <div class="row form-group my-2 mx-auto ">
@@ -178,6 +203,7 @@
 
 
         </div>
+        <a>  <?php echo ($numerocategorieproduitselectionnee); ?> </a>
 
 
 
@@ -218,42 +244,8 @@
 </form>     
                                    <!--//? FIN 1er FORMULAIRE -->
 
-
-
         <!-- FOOTER -->
         
         <?php
         include("piedpage.php");
         ?>
-
-
-                                <!-- Formulaire Photo A GERER PLUS TARD
-
-                                <div class="row form-group  my-2 mx-auto">
-        <label for="photo" class="  col-sm-12 col-form-label align-self-center py-2">Photo:</label>
-                <div class="col-sm-12 px-0">
-                <input type="text"  class=" form-control-plaintext py-2 border" id="photo" name="photo"  placeholder="photo">
-                </div>
-      </div> 
-      
-      -->
-
-
-                              <!-- Formulaire Catégorie BACK UP
-
-        <div class="row form-group my-2 mx-auto">
-        <label for="categorie" class="col-sm-12 col-form-label align-self-center py-2" >catégorie*</label>
-                <div class="col-12 px-0">
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="categorie">
-                                <option selected>Veuillez sélectionner une catégorie</option>
-                                <?php /*
-                                        $reponsecat = $db->query('SELECT DISTINCT cat_nom, cat_id FROM categories ORDER BY cat_id ASC');
-                                        $resultat = $reponsecat->fetch(PDO::FETCH_OBJ);
-                                        while ($resultat = $reponsecat->fetch())
-                {
-                        echo '<option value="' .$resultat['cat_id'].'">' .$resultat['cat_nom']. '</option>';
-                } */
-                                ?>
-                        </select>
-                </div>
-        </div> -->
