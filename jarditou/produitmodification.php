@@ -20,27 +20,82 @@ $check01 = $check02 = $check03 = $check04 = $check05 = $check06 = $check07 =  $c
 
 //pas de vérificaiton pour ID car readonly $id = $_POST['id']; juste définition de variable pour nommer la photo
 $id = $_POST['id'];
-var_dump($id);
+//var_dump($id);
 
-        // check champ CATEGORIE: check nombre de 1 à 10 chffres
+        // todo check champ NOM DE CATEGORIE: check de 1 à 200 caractère A FAIRE après
 
-                                        //todo AJOUT DE CATEGORIE (complément hors exercice)
+                                        //bl CATEGORIE EXISTANTE
 
+                                        //^ gestion de l'ID
+if ($_POST['categorie'] != "autre") // si le choix du select prend la valeur d'un ID de catégorie existant et n'est donc pas "autre"
 
-$categorie = $_POST['categorie']; 
-
-if (preg_match("#^[0-9]{1,10}$# ", $categorie))
         {
-                $check01 = true;
-                echo "catégorie validée: $categorie <br>";
+        $idcategorieexistante = $_POST['categorie']; // création de la variable de l'ID correspondant au nom de la catégorie sélectionnée
+
+// var_dump($idcategorieexistante); // check variable effectué ok
+
+                                        //^ gestion du nom
+
+$nomcategorieexistanterequete = $db->query('SELECT cat_nom FROM categories WHERE cat_id='.$idcategorieexistante.''); 
+$nomcategorieexistanteresultat = $nomcategorieexistanterequete ->fetch(PDO::FETCH_OBJ); // requete pour trouver l'ID correspondant à la catégorie
+
+// var_dump($nomcategorieexistanteresultat); // check variable effectué ok
+
+        // DONC categorie existante: id = $idcategorieexistante nom = $nomcategorieexistanteresultat
 
         }
-else
-        {
-                $check01 = false;
-                echo 'Catégorie non valide, merci de sélectionner une catégorie dans la liste <br>';
 
+
+
+if ($_POST['categorie'] == "autre") // si le choix du select est "autre"
+
+        {
+                                        //bl AJOUT DE CATEGORIE  DANS LA TABLE CATEGORIE
+
+                                                //^ gestion du nom de la nouvelle catégorie
+
+        if (isset($_POST["ajoutdecatinput"])) // check remplissage de la nouvelle catégorie (reprise du formulaire)
+                {
+                $nouvellecategorie = $_POST["ajoutdecatinput"];  // variable reprenant le nom de la nouvelle categorie  (reprise du formulaire)
+// var_dump($nouvellecategorie); // check variable effectué ok
+                
+  
+                                        //^ check que la nouvelle catégorie est bien nouvelle
+
+                $reponsecat = $db->query('SELECT DISTINCT cat_nom, cat_id FROM categories ORDER BY cat_id ASC');
+                $resultatcat = $reponsecat->fetch(PDO::FETCH_OBJ);
+        
+                        while ($resultatcat = $reponsecat->fetch())
+                        {
+                                if ($nouvellecategorie == $resultatcat['cat_nom'])
+                                {
+                                        echo "erreur, la catégorie existe déjà, merci de la sélectionner dans la liste";
+                                        exit();
+                                }
+
+                        }
+                                                                //^ AJOUT DANS LA DB
+
+                $tab["nouvellecategorie"] = $_POST["ajoutdecatinput"]; // creation de la variable dans un tableau correspondant à la saisie de la nouvelle catégorie
+
+                $requeteajoutcat = $db->prepare('INSERT INTO `categories` (`cat_nom`) VALUES (:cat_nom);'); //requête d'ajout des données dans tableau catégorie sans cat_id car il est en auto_increment
+                $requeteajoutcat->bindValue(":cat_nom", $tab["nouvellecategorie"]);
+                $requeteajoutcat->execute(); 
+
+                                        //^ gestion de l'ID de la nouvelle catégorie
+
+                $idnouvellecategorierequete = $db->query('SELECT max(cat_id) FROM categories'); 
+                $idnouvellecategorieresultat = $idnouvellecategorierequete ->fetch(PDO::FETCH_COLUMN); // requete pour trouver l'ID correspondant à la nouvelle catégorie
+                // var_dump($idnouvellecategorieresultat); // check variable effectué ok
+                }
+
+                
+       else
+                {
+                        echo 'Merci de nommer la nouvelle catégorie ou sélectionner une vatégorie existante <br>';
+                }
         }
+
 
         // check champ REFERENCE: check uniquement si non vide et nombre de caractères >10
 
@@ -55,6 +110,8 @@ else
                 $check02 = true;
                 echo"référence valide: $reference<br>";
         }
+
+
 
         // check champ LIBELLE: check au moins un caractère et moins de 200
 
@@ -132,50 +189,47 @@ else
 
         // check PHOTO
 
- 
-                // if(is_null($_POST['photo'])) //si aucun fichier n'a été chargé alors garder la photo enregistrée
 
-                if(!file_exists($_FILES['photo']['tmp_name']) || !is_uploaded_file($_FILES['photo']['tmp_name'])) 
-                        {
-                                $check08 = true; // la photo chargée est correcte donc on peut valider formulaire
-                                echo "la photo du produit a été conservée";
-                        }
-                   
-                else 
-                        {        // On met les types autorisés dans un tableau (ici pour une image)
-                                $extMimeTypes = array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
-                        
-                                // On extrait le type du fichier via l'extension FILE_INFO
-                                $finfo = finfo_open(FILEINFO_MIME_TYPE);
-                                $mimetype = finfo_file($finfo, $_FILES["photo"]["tmp_name"]);
-                                finfo_close($finfo);
-                                if (in_array($mimetype, $extMimeTypes))
-                                        {
-                                                $check08 = true; // Le type est parmi ceux autorisés, donc , on va pouvoir déplacer et renommer le fichier 
+        // if(is_null($_POST['photo'])) //si aucun fichier n'a été chargé alors garder la photo enregistrée
 
-                                                        // tranfert  PHOTO
-                        
-                                                // var_dump($_FILES); // visualisation des caractéristiques de l'image, mis en commentaire
-                                                $nominitialimage = $_FILES['photo']['name']; // variable nom de l'image initiale
-                                                // var_dump($nominitialimage);
-                                                $extensionfichier = pathinfo($nominitialimage, PATHINFO_EXTENSION); // variable pour capturer l'extension du fichier
-                                                // var_dump($extensionfichier);
-                                                // var_dump($id);
-                                                //move_uploaded_file($_FILES["photo"]["tmp_name"], "./public/images/$id.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu
-                                                move_uploaded_file($_FILES["photo"]["tmp_name"], "public/images/$id.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu
-                                        } 
-                                else 
-                                        {
-                                        echo "Type de fichier non autorisé";    
-                                        exit;
-                                        }
-                        }
+        if(!file_exists($_FILES['photo']['tmp_name']) || !is_uploaded_file($_FILES['photo']['tmp_name'])) 
+                {
+                        $check08 = true; // la photo chargée est correcte donc on peut valider formulaire
+                        echo "la photo du produit a été conservée <br>";
+                }
+                
+        else 
+                {        // On met les types autorisés dans un tableau (ici pour une image)
+                        $extMimeTypes = array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
+                
+                        // On extrait le type du fichier via l'extension FILE_INFO
+                        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                        $mimetype = finfo_file($finfo, $_FILES["photo"]["tmp_name"]);
+                        finfo_close($finfo);
+                        if (in_array($mimetype, $extMimeTypes))
+                                {
+                                        $check08 = true; // Le type est parmi ceux autorisés, donc , on va pouvoir déplacer et renommer le fichier 
 
-
+                                                // tranfert  PHOTO
+                
+                                        // var_dump($_FILES); // visualisation des caractéristiques de l'image, mis en commentaire
+                                        $nominitialimage = $_FILES['photo']['name']; // variable nom de l'image initiale
+                                        // var_dump($nominitialimage);
+                                        $extensionfichier = pathinfo($nominitialimage, PATHINFO_EXTENSION); // variable pour capturer l'extension du fichier
+                                        // var_dump($extensionfichier);
+                                        // var_dump($id);
+                                        //move_uploaded_file($_FILES["photo"]["tmp_name"], "./public/images/$id.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu
+                                        move_uploaded_file($_FILES["photo"]["tmp_name"], "public/images/$id.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu
+                                } 
+                        else 
+                                {
+                                echo "Type de fichier non autorisé";    
+                                exit;
+                                }
+                }
 
 
-/* note importante
-
+/* note importante pou rles photos
 
                 $_FILES['fichier']['name']
                     Contient le nom d'origine du fichier 
@@ -197,12 +251,12 @@ else
 
         // check  BOUTON RADIO BLOQUE non nécessaire car donnée reportée du fichier détails
 
-
-
-
                                         //bl   VERIFICATION et MISE EN TABLEAU des variables 
 
 $tab = [];
+
+// var_dump($idcategorieexistante);
+// var_dump($_POST['categorie']);
 
 if (isset($_POST["id"]))
         $tab["id"] = (int) $_POST["id"];
@@ -210,8 +264,28 @@ if (isset($_POST["id"]))
 if (isset($_POST["reference"]))
         $tab["reference"] = $reference;
 
-if (isset($_POST["categorie"]))
-        $tab["categorie"] = (int) $categorie;
+
+// var_dump($idcategorieexistante); // check variable effectué ok
+
+
+if ($_POST['categorie'] == "autre") // si le choix du select est "autre"
+
+// rappel: categorie nouvelle: id = $idnouvellecategorieresultat nom = $nouvellecategorie
+        {         
+                if (isset($idnouvellecategorieresultat))
+                $tab["categorie"] = $idnouvellecategorieresultat; // numéro d'ID correspondant à l'éventuelle nouvelle catégorie rentrée
+//var_dump($tab["categorie"]);
+
+        }
+        
+if ($_POST['categorie'] != "autre") // si le choix du select est "autre"
+
+// rappel: categorie existante: id = $idcategorieexistante nom = $nomcategorieexistanteresultat
+        { 
+                if (isset($idcategorieexistante))
+                        $tab["categorie"] = intval($idcategorieexistante);
+        //var_dump($tab["categorie"]);
+        }
 
 if (isset($_POST["libelle"]))
         $tab["libelle"] = $libelle;
@@ -231,7 +305,7 @@ if (isset($_POST["couleur"]))
 if(!file_exists($_FILES['photo']['tmp_name']) || !is_uploaded_file($_FILES['photo']['tmp_name'])) 
                 {
                 if (isset($extensionfichier))
-                        $tab["photo"] = $extensionfichier; //stocke l'extension de la photo dans le tableau pour transfer
+                        $tab["photo"] = $extensionfichier; //stocke l'extension de la photo dans le tableau pour transfert
                 }
 
 if (isset($_POST["boutonbloque"]))
@@ -243,7 +317,7 @@ if (isset($_POST["modification"]) || empty($_POST["modification"]))
 
 
 
-                                                //bl MISE A JOUR DB
+                                                //bl REQUETE DE MODIFICATION DE DONNEES
 
 
 if ($check01 = $check02 = $check03 = $check04 = $check05 = $check06 = $check07 = $check08 == true)
@@ -260,7 +334,7 @@ if ($check01 = $check02 = $check03 = $check04 = $check05 = $check06 = $check07 =
                 }
         $requete->bindValue(":pro_id", $tab["id"]);
         $requete->bindValue(":pro_ref", $tab["reference"]);
-        $requete->bindValue(":pro_cat_id", $tab["categorie"]);
+        $requete->bindValue(":pro_cat_id", $tab["categorie"]); 
         $requete->bindValue(":pro_libelle", $tab["libelle"]);
         $requete->bindValue(":pro_description", $tab["description"]);
         $requete->bindValue(":pro_prix", $tab["prix"]);
@@ -268,7 +342,7 @@ if ($check01 = $check02 = $check03 = $check04 = $check05 = $check06 = $check07 =
         $requete->bindValue(":pro_couleur", $tab["couleur"]);
         if(!file_exists($_FILES['photo']['tmp_name']) || !is_uploaded_file($_FILES['photo']['tmp_name']))  // condition si image non chargée
                 {
-                        echo "ras";
+                        echo "photo existe et a été chargée";
                 }
                 else
                 {

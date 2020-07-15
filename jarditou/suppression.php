@@ -22,6 +22,10 @@
               var_dump($recuppro_id);
 
 
+              
+                                //bl REQUETE DE SUPPRESSION DE DONNEES
+
+
               $requete = $db->prepare ("DELETE FROM produits WHERE pro_id = $recuppro_id");
               $result = $requete->execute();
 

@@ -1,21 +1,13 @@
 
-
-                                        // ? ******** 
-
-                            // ? FONCTION VALIDATION DE SUPPRESSION PRODUIT provient de produitdetails.php et renvoi vers suppression.php
+                            // bl FONCTION VALIDATION DE SUPPRESSION PRODUIT provient de produitdetails.php et renvoi vers suppression.php
                             
-                                        // ? ******** 
 
 
-var suppression= document.getElementById("suppression"); // va cherche le bouton avec l'ID "suppression"  de produitdetails.php
-suppression.addEventListener("click",suppressionproduit); // active la fonction suppressionproduit si on click sur le bouton
 function suppressionproduit()
-
 {
     var reponse = window.confirm("êtes vous sur de vouloir supprimer les données?");
     if (reponse == true)
         {
-
             // envoyer le formulaire
             //var pro_id = document.getElementById("id").value; // va chercher la valeur du pro_ID dnas le formulaire via son ID
             // console.log(pro_id); vérification is en commentaire
@@ -26,15 +18,34 @@ function suppressionproduit()
         {
             alert("nous vous redirigeons vers la liste des produits");
             location.href="liste.php";
+            return false;
         }
 }
 
-                                    // ? ******** 
+                        // bl RENSEIGNEMENT DES INFO DE LA NOUVELLE CATEGORIE dans produitmodificationform
 
-                        // ? check remplissage formulaire jarditou (ex 5 report de la partie -  JS 16 - les formulaires) contact.php (check PHP non fait)
 
-                                    // ? ******** 
+selectcat = document.getElementById("categorie"); // variable select est la valeur du champ "catégorie" (liste du formulaire)
+selectcat.addEventListener("change",apparitionform); // active la fonction apparititionform si la valeur est changée
+function apparitionform()
+    {
+        selectcatvalue = document.getElementById("categorie").value;
+        ajoutdecat = document.getElementById("ajoutdecat");  // variable ajoutdecat est la valeur de la div "ajoutdecat" = div du formulaire avec le formulaire qui apparait
+        ajoutdecatinput = document.getElementById("ajoutdecatinput");
+        if (selectcatvalue == "autre")
+                        {
+                            ajoutdecat.classList.remove("d-none"); //enlève la class d-none à la valeur du champ pour qu'il soit rempli par l'utilisateur
+                            
+                        }
+            else
+                        {
+                            ajoutdecat.classList.add("d-none"); //enlève la class d-none à la valeur du champ pour qu'il soit rempli par l'utilisateur
+                            ajoutdecatinput.value = null;
+                        }
+                        return;
+    }
 
+                        // bl check remplissage formulaire jarditou (ex 5 report de la partie -  JS 16 - les formulaires) contact.php (check PHP non fait)
 
 var revueform = document.getElementById("formulairedecontact"); // lien avec formulaire de contact
 revueform.addEventListener("click", checkform);

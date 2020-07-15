@@ -51,10 +51,11 @@
                         <select class="custom-select mr-sm-2" id="categorie" name="categorie">
                                 <?php 
                                         $numerocategorieproduitselectionnee = $_POST['categorie'];
-                                       
+
+                                       // bl SYNTAXE DE REQUETE TYPE
+
                                         $reponsecat = $db->query('SELECT DISTINCT cat_nom, cat_id FROM categories ORDER BY cat_id ASC');
                                         $resultat = $reponsecat->fetch(PDO::FETCH_OBJ);
-
 
                                         while ($resultat = $reponsecat->fetch())
                                                 {
@@ -78,10 +79,21 @@
                                                                 }
                                                 }
                                 ?>
-                                                                <option>Autre: </option>
+                                                                <option value="autre">Autre: </option>
+
+
                         </select>
                 </div>
         </div>
+
+                             <!-- Formulaire ajout catégorie -->
+
+      <div class="row form-group  my-2 mx-auto d-none" id="ajoutdecat">
+        <label for="ajoutdecatinput" class="  col-sm-12 col-form-label align-self-center py-2">Rentrez le nom de la nouvelle catégorie:</label>
+                <div class="col-sm-12 px-0">
+                <input type="text"  class=" form-control-plaintext py-2 border" id="ajoutdecatinput" name="ajoutdecatinput">
+                </div>
+      </div>
 
                      <!-- Formulaire Libellé -->
 
@@ -202,10 +214,6 @@
 
 
         </div>
-        <a>  <?php echo ($numerocategorieproduitselectionnee); ?> </a>
-
-
-
 
 
 

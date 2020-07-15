@@ -257,7 +257,7 @@ if (isset($_POST["ajout"]) || empty($_POST["ajout"]))
 if (isset($_POST["boutonbloque"]))
         $tab["boutonbloque"] = $_POST["boutonbloque"];
 
-                                          // bl AJOUT DES DONNEES DANS LE FORMULAIRE SI LES DONNEES SONT VALIDES
+                                          // bl REQUETE D'AJOUT DE DONNEES
 
 
 if ($check01 = $check02 = $check03 = $check04 = $check05 = $check06 = $check07 = $check08 == true)
