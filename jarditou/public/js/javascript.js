@@ -22,7 +22,7 @@ function suppressionproduit()
         }
 }
 
-                        // bl RENSEIGNEMENT DES INFO DE LA NOUVELLE CATEGORIE dans produitmodificationform
+                        // bl APPARITION CHAMP POUR RENSEIGNEMENT DES INFO DE LA NOUVELLE CATEGORIE dans produitmodificationform
 
 
 selectcat = document.getElementById("categorie"); // variable select est la valeur du champ "catégorie" (liste du formulaire)
@@ -45,6 +45,8 @@ function apparitionform()
                         return;
     }
 
+
+    /*
                         // bl check remplissage formulaire jarditou (ex 5 report de la partie -  JS 16 - les formulaires) contact.php (check PHP non fait)
 
 var revueform = document.getElementById("formulairedecontact"); // lien avec formulaire de contact
@@ -55,7 +57,7 @@ revueform.addEventListener("click", checkform);
 var bouton5 = document.getElementById("bouton5");
 bouton5.addEventListener("click", checkform);
 
-*/
+
 function checkform()
 
 {// ouverture fonction du bouton
@@ -238,136 +240,170 @@ function checkform()
                     checkcheckbox = false;
                 }
 
-                /*
-                
-validation avec apparition message en cas d'erreur dans le formulaire avec d-none
-element.classList.remove("d-none");
-
-
-Autre option = créer un span vide avec un ID 
-et le remplir dans javascript
-
-                */ 
 
 
 }// fermeture fonction du bouton
 
 revueform.submit(); //^envoie le submit après la revue de formulaire
 
+*/
 
                                             // ? TEST REVUE FORMULAIRE MODIFICATION produitmodificationform
+    
+                                  /*          
+    window.addEventListener("load", lancementaddeventlistener); // lance les addeventlistener des champs au chargement de la page
+
+    window.addEventListener("load", surligne); // lance les addeventlistener des couleurs au démarrage
 
 
-                             /*               
-                                            
-    window.addEventListener("load", lancementaddeventlistener) // lance les addeventlistener des champs au chargement de la page
-
-    function lancementaddeventlistener
+    function lancementaddeventlistener()
     {
 
-        categorievalue.addEventListener("change", verifcategorie);
         referencevalue.addEventListener("change", verifreference);
         libellevalue.addEventListener("change", veriflibelle);
-        descriptionvalue.addEventListener("change", verifdescription);
+    descriptionvalue.addEventListener("change", verifdescription);
         prixvalue.addEventListener("change", verifprix);
         stockvalue.addEventListener("change", verifstock);
         couleurvalue.addEventListener("change", verifcouleur);
         photoextvalue.addEventListener("change", verifphotoext);
         radiobloque1value.addEventListener("change", verifradiobloque1);
         radiobloque2value.addEventListener("change", verifradiobloque2);
+
     }
 
-    function surligne(champ, erreur)
+
+
+    function surligne(champ, booleen)
     {
-        if (erreur)
+        if (booleen)
                 {
-                champ.style.backgroundColor = "#fba";
+                champ.style.backgroundColor = "#fba"; // colore le champ si erreur
                 }
         else
                 {
-                champ.style.backgroundColor = "#FFFFFF";
+                champ.style.backgroundColor = "#FFFFFF"; // le champ reste blanc si vérification ok
                 }
     }
+        */
 
 
-    var val01 = val02 = val03 = val04 = val05 = val06 = val07 = val08 = false;// variables booléennes de validation
+    //var val01 = val02 /*= val03 = val04 = val05 = val06 = val07 = val08*/ = false;// variables booléennes de validation
     var erreur = false; // variable de changement de couleur si une variable val = false
 
-    //$ CATEGORIE
+    // ID  AUTO INCREMENT DONC PAS DE VERIFICAITON
 
-    var categorie = 0;
-    var categorie = document.getElementById("categorie") ;
-    var categorievalue = categorie.value;
-    var message1 ="x";
 
-    function verifcategorie()
-{
-    if(categorievalue.length < 1 || categorievalue.length > 10)
-            {
-                val01 =false;
-                categorievalue.textContent = message1;
-                surligne(true); // le booleen erreur de la fonction sruligne est true donc la couleur va être changée en conséquences
-                return val01;
-            }
-else
-            {
-                status = true;
-                document.getElementById("validation").textContent = message1;
-                //  categorie.classlist.remove("d-none");
-                surligne(champ, false);
-                return val01;
-            }
-}
-var verifcategorie = verifcategorie();
+    // CATEGORIE  LISTE DEROULANTE DONC PAS DE VERIFICAITON
 
-    // $ REFERENCE
 
-    var reference = "x";
+    //  REFERENCE de 1 à 10 caractères
+
     var reference = document.getElementById("reference");
-    var referencevalue = reference.value;
-    var message2 ="x";
 
+    reference.addEventListener("change", verifreference);
 
-    function verifcategorie()
-    {
-        if(categorievalue.length < 1 || categorievalue.length > 10)
+    function verifreference()
                 {
-                    val01 =false;
-                    categorievalue.textContent = message1;
-                    surligne(true); // le booleen erreur de la fonction sruligne est true donc la couleur va être changée en conséquences
-                    return val01;
+                    var erreurreference = document.getElementById("erreurreference");
+                    var referencevalue = document.getElementById("reference").value;
+                    console.log(referencevalue);
+
+                    if (referencevalue.length < 1 || referencevalue.length > 10)
+                            {
+                                erreurreference.classList.remove("d-none");
+                                erreurreference.style.backgroundColor = "#fba";
+                                // surligne(referencevalue, true); // le booleen erreur de la fonction sruligne est true donc la couleur va être changée en conséquences
+                                return;
+                            }
+                    else
+                            {
+                                erreurreference.classList.add("d-none");
+                                // surligne(referencevalue, false);
+                                return;
+                            }
                 }
-    else
-                {
-                    status = true;
-                    document.getElementById("validation").textContent = blanc;
-                    surligne(champ, false);
-                    return val01;
-                }
-    }
-    var verifcategorie = verifcategorie();
-    
 
-    //$ LIBELLE
+//unblur= function() dans l'input dans le champ permet de vérifier directement la saisie du formulaire
+ 
+//  LIBELLE - de 1 à 200 caractères
 
-    var libelle = "x";
-    var libelle = document.getElementById("libelle");
-    var libellevalue = libelle.value;
-    var message3 ="x";
+            var libelle = document.getElementById("libelle");
 
-    //$ DESCRIPTION
+            libelle.addEventListener("change", veriflibelle);
+        
+            function veriflibelle()
+                        {
+                            var erreurlibelle = document.getElementById("erreurlibelle");
+                            var libellevalue = document.getElementById("libelle").value;
 
-    var description = "x";
+                            if (libellevalue.length < 1 || libellevalue.length > 200)
+                                    {
+                                        erreurlibelle.classList.remove("d-none");
+                                        erreurlibelle.style.backgroundColor = "#fba";
+                                        return;
+                                    }
+                            else
+                                    {
+                                        erreurlibelle.classList.add("d-none");
+                                        return;
+                                    }
+                        }
+
+
+    // DESCRIPTION - de 1 à 1000 caractères
+
+
     var description = document.getElementById("description");
-    var descriptionvalue = description.value;
-    var message4 ="x";
 
+    description.addEventListener("change", verifdescription);
+
+                        function verifdescription()
+                        {
+                            var erreurdescription = document.getElementById("erreurdescription");
+                            var descriptionvalue = document.getElementById("description").value;
+
+                            if (descriptionvalue.length < 1 || descriptionvalue.length > 200)
+                                    {
+                                        console.log("boucle false");
+                                        erreurdescription.classList.remove("d-none");
+                                        erreurdescription.style.backgroundColor = "#fba";
+                                        return;
+                                    }
+                            else
+                                    {
+                                        console.log("boucle true");
+                                        erreurdescription.classList.add("d-none");
+                                        return;
+                                    }
+                        }
+ 
     //$ PRIX
 
-    var prix = 0;
     var prix = document.getElementById("prix");
-    var prixvalue = prix.value;
-    var message5 ="x";
+
+    prix.addEventListener("change", verifprix);
+
+                        function verifprix()
+                        {
+                            var erreurprix = document.getElementById("erreurprix");
+                            var prixvalue = document.getElementById("prix").value;
+
+                            if (prixvalue == "#^[0-9]{1,4}.[0-9]{2,2}$#")
+                                    {
+                                        console.log("boucle false");
+                                        erreurdescription.classList.remove("d-none");
+                                        erreurdescription.style.backgroundColor = "#fba";
+                                        return;
+                                    }
+                            else
+                                    {
+                                        console.log("boucle true");
+                                        erreurdescription.classList.add("d-none");
+                                        return;
+                                    }
+                        }
+
+          /*
 
     //$ STOCK
 
@@ -402,15 +438,7 @@ var verifcategorie = verifcategorie();
     var radiobloque2value = radiobloque2.value;
     var message9 ="x";
 
-    
+    Autre option = créer un span vide avec un ID 
+    et le remplir dans javascript
 
-
-
-
-
-
-//d-none danbs class
-// remove d-none
-// libelle.classlist.remove("d-none");
-
-*/
+                */ 

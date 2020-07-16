@@ -111,8 +111,6 @@ else
                 echo"référence valide: $reference<br>";
         }
 
-
-
         // check champ LIBELLE: check au moins un caractère et moins de 200
 
 $libelle = $_POST['libelle'];
@@ -218,7 +216,7 @@ else
                                         $extensionfichier = pathinfo($nominitialimage, PATHINFO_EXTENSION); // variable pour capturer l'extension du fichier
                                         // var_dump($extensionfichier);
                                         // var_dump($id);
-                                        //move_uploaded_file($_FILES["photo"]["tmp_name"], "./public/images/$id.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu
+                                        // move_uploaded_file($_FILES["photo"]["tmp_name"], "./public/images/$id.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu
                                         move_uploaded_file($_FILES["photo"]["tmp_name"], "public/images/$id.$extensionfichier"); // bouger l'image du temporaire  à l'emplacement voulu et avec le nom voulu
                                 } 
                         else 

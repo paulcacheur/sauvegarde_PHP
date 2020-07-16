@@ -26,7 +26,9 @@
 
   <div class="border border-black my-2" id="produitmodificationform">
 
-                      <!-- Formulaire ID -->
+
+                        <!-- Formulaire ID -->
+
 
       <div class="row form-group  my-2 mx-auto">
         <label for="id" class="  col-sm-12 col-form-label align-self-center py-2">ID:</label>
@@ -35,12 +37,22 @@
                 </div>
       </div>
 
-                      <!-- Formulaire Référence -->
+                        <!-- Formulaire Référence -->
+
 
       <div class="row form-group  my-2 mx-auto">
         <label for="reference" class="  col-sm-12 col-form-label align-self-center py-2">Référence:</label>
                 <div class="col-sm-12 px-0">
                 <input type="text"  class=" form-control-plaintext py-2 border" id="reference" name="reference" value="<?php echo $_POST['reference'];?>">
+                </div>
+      </div>
+
+                        <!-- Formulaire ERREUR Référence -->
+
+
+      <div class="row form-group  my-2 mx-auto d-none" id="erreurreference">
+                <div class="col-sm-12 px-0">
+                <input type="text"  class=" form-control-plaintext py-2 border" value="merci de saisir une référence de 0 à 1000 caractères" readonly>
                 </div>
       </div>
                         <!-- Formulaire Catégorie -->
@@ -86,6 +98,7 @@
                 </div>
         </div>
 
+
                              <!-- Formulaire ajout catégorie -->
 
       <div class="row form-group  my-2 mx-auto d-none" id="ajoutdecat">
@@ -104,6 +117,14 @@
                 </div>
       </div>
 
+                 <!-- Formulaire ERREUR libellé -->
+
+        <div class="row form-group  my-2 mx-auto d-none" id="erreurlibelle">
+                <div class="col-sm-12 px-0">
+                <input type="text"  class=" form-control-plaintext py-2 border" value="merci de saisir un libellé de 0 à 200 caractères">
+                </div>
+      </div>
+
                       <!-- Formulaire Description -->
 
       <div class="row form-group  my-2 mx-auto">
@@ -113,12 +134,28 @@
                 </div>
       </div>
 
+                       <!-- Formulaire ERREUR Description -->
+
+        <div class="row form-group  my-2 mx-auto d-none" id="erreurdescription">
+                <div class="col-sm-12 px-0">
+                <input type="text"  class=" form-control-plaintext py-2 border" value="merci de saisir une description de 0 à 1000 caractères">
+                </div>
+      </div>
+
                      <!-- Formulaire Prix -->
 
       <div class="row form-group  my-2 mx-auto">
         <label for="prix" class="  col-sm-12 col-form-label align-self-center py-2">Prix en Euros:</label>
                 <div class="col-sm-12 px-0">
                 <input type="text"  class=" form-control-plaintext py-2 border" id="prix" name="prix"value="<?php echo $_POST['prix'];?>">
+                </div>
+      </div>
+
+                           <!-- Formulaire ERREUR Prix -->
+
+        <div class="row form-group  my-2 mx-auto d-none" id="erreurprix">
+                <div class="col-sm-12 px-0">
+                <input type="text"  class=" form-control-plaintext py-2 border" value="merci de saisir un prix de  6 chiffres maximum dont 2 après la virgule">
                 </div>
       </div>
 

@@ -1,0 +1,10 @@
+/* div table tr td  
+{
+    font-size: 0,5 rem;
+}
+*/
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th 
+{
+    background-color: #ffd433;
+}

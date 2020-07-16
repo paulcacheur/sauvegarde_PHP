@@ -14,7 +14,6 @@
 
                                         //bl VALIDATION DU FORMULAIRE ID, cat, ref, lib, desc, prix, stock, couleur, photo, ajout modif, bloqué
 
-
 // vérfie la validité champs du formulaire avec un booléen
 
 $check01 = $check02 = $check03 = $check04 = $check05 = $check06 = $check07 = $check08 = $check09 = false;
@@ -23,7 +22,6 @@ $check01 = $check02 = $check03 = $check04 = $check05 = $check06 = $check07 = $ch
 
 
 // check champ catégorie: check nombre de 1 à 10 chffres
-
 
                          //todo ajout de catégorie (complément hors exercice)
 
