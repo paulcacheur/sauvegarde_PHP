@@ -45,8 +45,6 @@ $nomcategorieexistanteresultat = $nomcategorieexistanterequete ->fetch(PDO::FETC
 
         }
 
-
-
 if ($_POST['categorie'] == "autre") // si le choix du select est "autre"
 
         {
@@ -312,8 +310,6 @@ if (isset($_POST["boutonbloque"]))
 
 if (isset($_POST["modification"]) || empty($_POST["modification"]))
         $tab["modification"] = date("Y-m-d H:i:s");
-
-
 
                                                 //bl REQUETE DE MODIFICATION DE DONNEES
 

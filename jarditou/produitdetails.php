@@ -25,12 +25,9 @@
 
 
 
-
-
 <form class="col-12 px-0" method="POST" action="produitmodificationform.php" id ="formulairedetail"> 
 
   <div class="border border-black my-2" id="produitdetail">
-
 
 
                       <!-- Formulaire ID -->  
@@ -232,14 +229,13 @@
                   <div class="row form-group my-2 mx-auto text-center">
 
 
-                        <form class="col-sm-12 px-0 col-form-label  py-2"  method="POST" action="suppression.php"> 
+                        <form class="col-sm-12 px-0 col-form-label  py-2"  method="POST" action="suppression.php" id="suppressionform"> 
                             <div >
                             <input type="hidden" id="recupextphoto" name="recupextphoto" value="<?php echo $produit->pro_photo;?>"> <!--  input hidden pour récupérer la valeur de l'extension photo pour pouvoir supprimer photo- -->
                             <input type="hidden" id="recuppro_id" name="recuppro_id" value="<?php echo $produit->pro_id;?>"> <!--  input hidden pour récupérer la valeur de l'extension photo pour pouvoir supprimer photo- -->
-                            <button type="submit" class="btn btn-primary" id="suppression" name="suppression" onclick="suppressionproduit()">Suppression du produit</button>
+                            <button type="button" class="btn btn-primary" id="suppression" name="suppression" onclick="suppressionproduit()">Suppression du produit</button>
                             </div>
                         </form>
-
                   </div>
 <br>
 

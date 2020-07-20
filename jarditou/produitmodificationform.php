@@ -155,7 +155,7 @@
 
         <div class="row form-group  my-2 mx-auto d-none" id="erreurprix">
                 <div class="col-sm-12 px-0">
-                <input type="text"  class=" form-control-plaintext py-2 border" value="merci de saisir un prix de  6 chiffres maximum dont 2 après la virgule">
+                <input type="text"  class=" form-control-plaintext py-2 border" value="merci de saisir un prix de 4 chiffres maximum +/- 2 après la virgule">
                 </div>
       </div>
 

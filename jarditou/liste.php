@@ -68,15 +68,10 @@
                     ?>
 
                                    </tbody>
+
                               </table>
 
                           </div>
-
-                         
-
-
-
-
 
                                                     <!--//bl FOOTER -->
         
